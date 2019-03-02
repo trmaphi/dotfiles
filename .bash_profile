@@ -8,7 +8,11 @@ case $- in
 esac
 
 # Path to the bash it configuration
-export BASH_IT="/Users/truong/.bash_it"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  export BASH_IT="/home/truong/.bash_it"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  export BASH_IT="/Users/truong/.bash_it"
+fi
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
