@@ -4,6 +4,10 @@ set number
 " Map jj to <Esc>
 :imap jj <Esc>
 
-" Turn on per-project configuration file
+" Allows loading local executing local rc files.
 set exrc
+
+" Disallows the use of :autocmd, shell and write commands in 
+" local .vimrc files.
+set secure
 
