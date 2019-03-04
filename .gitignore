@@ -1,5 +1,8 @@
+# Mac OS X
 .DS_Store
 
+# vscode editor
 .vscode/extensions/
 
-.bash_completion.d/
+# vim modified directories history
+.vim/.netrwhist
