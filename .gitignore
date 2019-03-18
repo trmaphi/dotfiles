@@ -2,7 +2,7 @@
 .DS_Store
 
 # vscode editor
-.vscode/extensions/
-
+.vscode/settings.json
 # vim modified directories history
 .vim/.netrwhist
+.vim/plugged/*
