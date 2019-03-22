@@ -3,6 +3,7 @@
 
 # vscode editor
 .vscode/settings.json
+
 # vim modified directories history
 .vim/.netrwhist
 .vim/plugged/*

@@ -1,5 +1,8 @@
  # Comments and blank lines are allowed.
- 
+
+.DS_Store # Mac OS X 
+
+
  RCS
  .+,v
  
