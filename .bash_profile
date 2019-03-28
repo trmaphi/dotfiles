@@ -30,3 +30,7 @@ source "$BASH_IT"/bash_it.sh
 
 # Set JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
+
+load_docker_engine(){
+. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
+}
