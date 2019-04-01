@@ -1,5 +1,3 @@
-# Add Visual Studio Code (code)
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" 
 
 # If not running interactively, don't do anything
 case $- in
@@ -8,11 +6,13 @@ case $- in
 esac
 
 # Path to the bash it configuration
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  export BASH_IT="/home/truong/.bash_it"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export BASH_IT="/Users/truong/.bash_it"
-fi
+# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#   export BASH_IT="/home/truong/.bash_it"
+# elif [[ "$OSTYPE" == "darwin"* ]]; then
+#   export BASH_IT="/Users/truong/.bash_it"
+# fi
+
+export BASH_IT="${HOME}/.bash_it"
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
@@ -31,6 +31,11 @@ source "$BASH_IT"/bash_it.sh
 # Set JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
 
-load_docker_engine(){
-. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
-}
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# Add Visual Studio Code (code)
+	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" 
+	
+	load_docker_engine(){
+	. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
+	}
+fi
