@@ -5,13 +5,6 @@ case $- in
     *) return;;
 esac
 
-# Path to the bash it configuration
-# if [[ "$OSTYPE" == "linux-gnu" ]]; then
-#   export BASH_IT="/home/truong/.bash_it"
-# elif [[ "$OSTYPE" == "darwin"* ]]; then
-#   export BASH_IT="/Users/truong/.bash_it"
-# fi
-
 export BASH_IT="${HOME}/.bash_it"
 
 # Lock and Load a custom theme file.
@@ -25,16 +18,21 @@ unset MAILCHECK
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
-# Load Bash It
+# Load Bash-it
 source "$BASH_IT"/bash_it.sh
 
-# Set JAVA_HOME
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
+# Linux
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	# Set JAVA_HOME
+	export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
+fi
 
+# Darwin 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	# Add Visual Studio Code (code)
 	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" 
 	
+	# Load linux vm in Docker toolbox
 	load_docker_engine(){
 	. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
 	}
