@@ -1,4 +1,4 @@
-
+### Bash-it configuration
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
@@ -21,6 +21,7 @@ export SCM_CHECK=true
 # Load Bash-it
 source "$BASH_IT"/bash_it.sh
 
+### OS specific code
 # Linux
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	# Set JAVA_HOME
@@ -37,3 +38,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
 	}
 fi
+
