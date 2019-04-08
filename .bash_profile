@@ -39,3 +39,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	}
 fi
 
+# Set GO_PATH environment variable
+export GOPATH=$(go env GOPATH)
