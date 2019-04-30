@@ -26,6 +26,17 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
+"" Netrw config
+let g:netrw_banner = 0          " remove top banner
+let g:netrw_liststyle = 3       " view mode of netrw
+let g:netrw_browse_split = 4    " change how files opened: 4. open file in previous window
+let g:netrw_altv = 1            
+let g:netrw_winsize = 25        " set the width of directory explorer: 25% of the page
+augroup ProjectDrawer           " launch after enter vim
+  autocmd!
+  autocmd VimEnter * :Vexplore  " open vim in vertical split
+augroup END
+
 "" Load vim-plug
 call plug#begin('~/.vim/plugged')
 call plug#end()
