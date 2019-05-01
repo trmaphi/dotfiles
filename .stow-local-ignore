@@ -1,26 +1,32 @@
- # Comments and blank lines are allowed.
+# Mac OS X 
+.DS_Store 
 
-.DS_Store # Mac OS X 
+RCS
+.+,v
 
+# CVS conflict files / emacs lock files
+CVS
+\.\#.+       
+\.cvsignore
 
- RCS
- .+,v
- 
- CVS
- \.\#.+       # CVS conflict files / emacs lock files
- \.cvsignore
- 
- \.svn
- _darcs
- \.hg
- 
- \.git
- \.gitignore
- \.gitmodules
- 
- .+~          # emacs backup files
- \#.*\#       # emacs autosave files
- 
- ^/README.*
- ^/LICENSE.*
- ^/COPYING
+# Subversion and mercurial
+\.svn
+_darcs
+\.hg
+
+# git files
+\.git
+\.gitignore
+\.gitmodules
+
+# emacs backup files
+.+~    
+# emacs autosave files     
+\#.*\#      
+
+# vscode
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+

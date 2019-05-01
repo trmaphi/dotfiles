@@ -7,3 +7,9 @@
 # vim modified directories history
 .vim/.netrwhist
 .vim/plugged/*
+
+#
+vscode/User/globalStorage/
+vscode/User/globalStorage/
+vscode/User/snippets
+vscode/User/workspaceStorage
