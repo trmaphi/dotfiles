@@ -25,6 +25,7 @@ _darcs
 \#.*\#      
 
 # vscode
+vscode
 
 ^/README.*
 ^/LICENSE.*
