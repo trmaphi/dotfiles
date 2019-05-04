@@ -34,7 +34,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" 
 	
 	# Load linux vm in Docker toolbox
-	load_docker_engine(){
+	load-docker-engine(){
 	. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
 	}
 fi
@@ -46,7 +46,6 @@ export GOPATH=$(go env GOPATH)
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
 
 ##### ALIASES
 alias batjson='bat --theme=TwoDark'
