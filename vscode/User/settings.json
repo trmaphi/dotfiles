@@ -1,6 +1,13 @@
 {
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "One Dark Pro",
+    
+    // UPDATE 
     "update.mode": "manual",
-    "extensions.autoCheckUpdates": false
+    "extensions.autoCheckUpdates": false,
+
+    // EDITOR
+    "editor.renderWhitespace": "boundary", 
+
+    // THEME
+    "workbench.colorTheme": "One Dark Pro",
 }
