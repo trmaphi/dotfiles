@@ -7,6 +7,9 @@
 
     // EDITOR
     "editor.renderWhitespace": "boundary", 
+    "breadcrumbs.enabled": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
     // THEME
     "workbench.colorTheme": "One Dark Pro",
