@@ -49,3 +49,6 @@ export NVM_DIR="$HOME/.nvm"
 
 ##### ALIASES
 alias batjson='bat --theme=TwoDark'
+
+# Depot_tools path
+export PATH=$PATH:${HOME}/Projects/depot_tools
