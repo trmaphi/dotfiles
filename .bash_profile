@@ -48,7 +48,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 ##### ALIASES
-alias batjson='bat --theme=TwoDark'
+alias bat:json='bat --theme=TwoDark'
+alias yj='yarn jest --runInBand --detectOpenHandles'
+alias yjl='yarn jest --lastCommit --runInBand --detectOpenHandles'
+alias ts-node='yarn ts-node'
+alias nodemon='yarn nodemon'
 
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
