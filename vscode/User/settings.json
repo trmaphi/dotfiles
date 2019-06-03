@@ -13,4 +13,5 @@
 
     // THEME
     "workbench.colorTheme": "One Dark Pro",
+    "editor.fontWeight": "500",
 }
