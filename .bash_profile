@@ -5,6 +5,7 @@ case $- in
     *) return;;
 esac
 
+# bash-it path
 export BASH_IT="${HOME}/.bash_it"
 
 # Lock and Load a custom theme file.
@@ -19,35 +20,13 @@ unset MAILCHECK
 export SCM_CHECK=true
 
 # Load Bash-it
-source "$BASH_IT"/bash_it.sh
+source "${BASH_IT}"/bash_it.sh
 
-### OS specific code
-# Linux
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-	# Set JAVA_HOME
-	export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
-fi
-
-# Darwin 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	# Add Visual Studio Code (code)
-	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" 
-	
-	# Load linux vm in Docker toolbox
-	load-docker-engine(){
-	. '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
-	}
-fi
-
-set-git-config-work() {
-	git config user.name "trmaphi"
-	git config user.email "phitruong@lecle.co.kr"
-}
-
-set-git-config-personal() {
-	git config user.name "trmaphi"
-	git config user.email "trmaphi@gmail.com"
-}
+# dotfiles path
+export DOT_FILES_PATH="${HOME}/dotfiles"
+# Load functions
+source "${DOT_FILES_PATH}"/functions/set-local-git-config.sh
+source "${DOT_FILES_PATH}"/functions/load-docker-toolbox.bash
 
 # Set GO_PATH environment variable
 export GOPATH=$(go env GOPATH)
@@ -59,10 +38,10 @@ export NVM_DIR="$HOME/.nvm"
 
 ##### ALIASES
 alias bat:json='bat --theme=TwoDark'
-alias yj='yarn jest --runInBand --detectOpenHandles'
-alias yjl='yarn jest --lastCommit --runInBand --detectOpenHandles'
-alias ts-node='yarn ts-node'
-alias nodemon='yarn nodemon'
+alias jid='jest --runInBand --detectOpenHandles'
+alias jidl='jest --runInBand --detectOpenHandles --lastCommit '
+alias dsls='SLS_DEBUG=*'
+alias heap='NODE_OPTIONS=--max-old-space-size=8192'
 
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
