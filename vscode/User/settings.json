@@ -1,17 +1,25 @@
 {
     "window.zoomLevel": 0,
-    
     // UPDATE 
     "update.mode": "manual",
     "extensions.autoCheckUpdates": false,
 
     // EDITOR
-    "editor.renderWhitespace": "boundary", 
+    "editor.renderWhitespace": "boundary",
+    "editor.formatOnSave": true,
+    "[json]": {
+    "editor.formatOnSave": false
+    },
+    "[jsonc]": {
+    "editor.formatOnSave": false
+    },
     "breadcrumbs.enabled": true,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-
+    
     // THEME
     "workbench.colorTheme": "One Dark Pro",
     "editor.fontWeight": "500",
+    // TERMINAL
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.macOptionIsMeta": true,
 }
