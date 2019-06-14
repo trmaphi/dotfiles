@@ -22,11 +22,8 @@ export SCM_CHECK=true
 # Load Bash-it
 source "${BASH_IT}"/bash_it.sh
 
-# dotfiles path
-export DOT_FILES_PATH="${HOME}/dotfiles"
 # Load functions
-source "${DOT_FILES_PATH}"/functions/set-local-git-config.sh
-source "${DOT_FILES_PATH}"/functions/load-docker-toolbox.bash
+source "${HOME}/.functions"
 
 # Set GO_PATH environment variable
 export GOPATH=$(go env GOPATH)
@@ -37,11 +34,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 ##### ALIASES
-alias bat:json='bat --theme=TwoDark'
-alias jid='jest --runInBand --detectOpenHandles'
-alias jidl='jest --runInBand --detectOpenHandles --lastCommit '
-alias dsls='SLS_DEBUG=*'
-alias heap='NODE_OPTIONS=--max-old-space-size=8192'
+source "${HOME}/.aliases"
 
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
