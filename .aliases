@@ -1,5 +1,3 @@
 alias bat:json='bat --theme=TwoDark'
 alias jid='jest --runInBand --detectOpenHandles'
-alias jidl='jest --runInBand --detectOpenHandles --lastCommit '
-alias dsls='SLS_DEBUG=*'
-alias heap='NODE_OPTIONS=--max-old-space-size=8192'
+alias jidl='jest --runInBand --detectOpenHandles --lastCommit'
