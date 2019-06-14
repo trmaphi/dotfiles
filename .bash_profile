@@ -1,9 +1,4 @@
 ### Bash-it configuration
-# If not running interactively, don't do anything
-case $- in
-  *i*) ;;
-    *) return;;
-esac
 
 # bash-it path
 export BASH_IT="${HOME}/.bash_it"
