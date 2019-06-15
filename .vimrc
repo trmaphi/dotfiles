@@ -1,5 +1,3 @@
-:imap jj <Esc>					" Map Esc key to jj
-
 "" Configure appearance
 syntax enable 					" Enable syntax
 set number 						" Show line number
