@@ -5,21 +5,6 @@ case $- in
     *) return;;
 esac
 
-# bash-it path
-export BASH_IT="${HOME}/.bash_it"
-
-# location /.bash_it/themes/
-export BASH_IT_THEME='minimal'
-
-# Don't check mail when opening terminal.
-unset MAILCHECK
-
-# Set this to false to turn off version control status checking within the prompt for all themes
-export SCM_CHECK=true
-
-# Load Bash-it
-source "${BASH_IT}"/bash_it.sh
-
 # Load functions
 source "${HOME}/.functions"
 
