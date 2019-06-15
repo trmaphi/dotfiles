@@ -1,4 +1,4 @@
-alias bat --json='bat --theme=TwoDark'
+alias bj='bat --theme=TwoDark'
 alias jil='jest --runInBand --lastCommit --detectOpenHandles'
 alias jis='jest --runInBand --changedSince='
 alias ji='jest --runInBand --detectOpenHandles'
