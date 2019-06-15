@@ -58,9 +58,13 @@ echo "##########################################################################
 
 echo ""
 echo "Enabling tap to click"
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write 'Apple Global Domain' com.apple.mouse.tapBehavior 1
+
+echo ""
+echo "Show POSIX path in finder title"
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 echo ""
 echo "Enabling the Develop menu and the Web Inspector in Safari"
