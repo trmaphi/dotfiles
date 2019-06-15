@@ -5,6 +5,9 @@ case $- in
     *) return;;
 esac
 
+# Dotfiles path
+export DOTFILES="${HOME}/dofiles";
+
 # Load functions
 source "${HOME}/.functions"
 
@@ -12,12 +15,18 @@ source "${HOME}/.functions"
 export GOPATH=$(go env GOPATH)
 
 # Set NVM home and load nvm
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="${HOME}/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
-##### ALIASES
+# Load completions
+for FILE in ${HOME}/.completions.d/*.completion.bash; do 
+  source $FILE
+done
+
+# Load custom aliases
 source "${HOME}/.aliases"
 
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
+
