@@ -1,9 +1,4 @@
-#! #! /usr/bin/env bash
-
-### if mac
-### if linux
-### check distro
-### 
+#! /usr/bin/env bash
 
 if [ $(uname) = "Darwin" ] ; then
 	. ./osx.setup.sh
