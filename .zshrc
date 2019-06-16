@@ -24,12 +24,24 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
+# Load Homebrew zsh site-functions
+if command -v brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # Load completions
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
-for FILE in ${HOME}/.completions.d/*.completion.bash; do 
-  source $FILE
+
+for COMPLETION in ${HOME}/.completions.d/*.completion.bash; do 
+  # Don't load Homebrew completion
+  if [ $COMPLETION = "${HOME}/.completions.d/system.completion.bash" ]; then
+    echo $COMPLETION
+  else
+    source $COMPLETION
+  fi
 done
+
 
 # Load custom aliases
 source "${HOME}/.aliases"
