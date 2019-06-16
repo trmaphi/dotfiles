@@ -21,7 +21,7 @@
     "editor.fontWeight": "500",
 
     // TERMINAL
-    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.macOptionIsMeta": true
 }
