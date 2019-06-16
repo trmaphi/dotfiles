@@ -104,8 +104,7 @@ function build_prompt {
         fi
     fi
     
-    echo "$(custom_build_prompt ${enabled:-true} ${current_commit_hash:-""} ${is_a_git_repo:-false} ${current_branch:-""} ${detached:-false} ${just_init:-false} ${has_upstream:-false} ${has_modifications:-false} ${has_modifications_cached:-false} ${has_adds:-false} ${has_deletions:-false} ${has_deletions_cached:-false} ${has_untracked_files:-false} ${ready_to_commit:-false} ${tag_at_current_commit:-""} ${is_on_a_tag:-false} ${has_upstream:-false} ${commits_ahead:-false} ${commits_behind:-false} ${has_diverged:-false} ${should_push:-false} ${will_rebase:-false} ${has_stashes:-false} ${action})"
-    
+    printf "$(custom_build_prompt ${enabled:-true} ${current_commit_hash:-""} ${is_a_git_repo:-false} ${current_branch:-""} ${detached:-false} ${just_init:-false} ${has_upstream:-false} ${has_modifications:-false} ${has_modifications_cached:-false} ${has_adds:-false} ${has_deletions:-false} ${has_deletions_cached:-false} ${has_untracked_files:-false} ${ready_to_commit:-false} ${tag_at_current_commit:-""} ${is_on_a_tag:-false} ${has_upstream:-false} ${commits_ahead:-false} ${commits_behind:-false} ${has_diverged:-false} ${should_push:-false} ${will_rebase:-false} ${has_stashes:-false} ${action})"
 }
 
 function_exists() {
@@ -117,6 +116,7 @@ function eval_prompt_callback_if_present {
         function_exists omg_prompt_callback && echo "$(omg_prompt_callback)"
 }
 
+PS1=""
 # THEME
 : ${omg_ungit_prompt:=$PS1}
 : ${omg_second_line:=$PS1}
@@ -298,7 +298,7 @@ function node_version {
     else
         local node_version
         node_version=$(node -v)
-        test -n "$node_version" && printf %s "[${green}⬢ $node_version${reset}]" || :
+        printf "${green} ⬢ $node_version${reset}"
     fi
 }
 
@@ -312,7 +312,7 @@ function yarn_version {
     else
         local yarn_version
         yarn_version=$(yarn -v)
-        test -n "$yarn_version" && printf %s "[${blue}😸 $yarn_version${reset}]" || :
+        printf "${blue}😸 $yarn_version${reset}"
     fi
 }
 
@@ -320,7 +320,7 @@ function aws_profile {
     local yellow='\e[0;33m'
     local reset='\e[0m'
     local region=$(aws configure get region --profile ${AWS_DEFAULT_PROFILE})
-    echo "[${yellow}☁ ${AWS_DEFAULT_PROFILE} ${region}${reset}]"
+    printf "${yellow}☁ ${AWS_DEFAULT_PROFILE} ${region}${reset}"
 }
 
-PS1="$(build_prompt)[\w] [\t] $(aws_profile) $(node_version) $(yarn_version) [$?]\n";
+PS1="\$(build_prompt)\n[\w] [\t] [\$(aws_profile)] [\$(node_version)] [\$(yarn_version)] [\$?]\n";
