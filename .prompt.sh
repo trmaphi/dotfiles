@@ -117,39 +117,6 @@ function eval_prompt_callback_if_present {
         function_exists omg_prompt_callback && echo "$(omg_prompt_callback)"
 }
 
-function node_version {
-    local green='\e[0;32m'
-    local reset='\e[0m' 
-    if ! command -v node &>/dev/null; then
-        echo "NODE NOT EXITS"
-    else
-        local node_version
-        node_version=$(node -v)
-        test -n "$node_version" && printf %s "${green}⬢ $node_version${reset}" || :
-    fi
-}
-
-function yarn_version {
-    local blue='\e[0;34m'
-    local reset='\e[0m'
-    if ! command -v node &>/dev/null; then
-        echo "NODE NOT EXITS"
-    elif ! command -v yarn &>/dev/null; then
-        echo "YARN NOT EXITS"
-    else
-        local yarn_version
-        yarn_version=$(yarn -v)
-        test -n "$yarn_version" && printf %s "${blue}😸 $yarn_version${reset}" || :
-    fi
-}
-
-function aws_profile {
-    local yellow='\e[0;33m'
-    local reset='\e[0m'
-    local region=$(aws configure get region --profile ${AWS_DEFAULT_PROFILE})
-    echo "${yellow}☁ ${AWS_DEFAULT_PROFILE} ${region}${reset}"
-}
-
 # Set PS1 PROMPT_COMMAND to empty
 PS1=""
 PROMPT_COMMAND=""
@@ -327,5 +294,37 @@ function custom_build_prompt {
     echo "${prompt}"
 }
 
-PS1="$(build_prompt)"
-PS1="${PS1}[\w] [\t] [$(aws_profile)] [$(node_version)] [$(yarn_version)] [$?]\n";
+function node_version {
+    local green='\e[0;32m'
+    local reset='\e[0m' 
+    if ! command -v node &>/dev/null; then
+        echo "NODE NOT EXITS"
+    else
+        local node_version
+        node_version=$(node -v)
+        test -n "$node_version" && printf %s "[${green}⬢ $node_version${reset}]" || :
+    fi
+}
+
+function yarn_version {
+    local blue='\e[0;34m'
+    local reset='\e[0m'
+    if ! command -v node &>/dev/null; then
+        echo "NODE NOT EXITS"
+    elif ! command -v yarn &>/dev/null; then
+        echo "YARN NOT EXITS"
+    else
+        local yarn_version
+        yarn_version=$(yarn -v)
+        test -n "$yarn_version" && printf %s "[${blue}😸 $yarn_version${reset}]" || :
+    fi
+}
+
+function aws_profile {
+    local yellow='\e[0;33m'
+    local reset='\e[0m'
+    local region=$(aws configure get region --profile ${AWS_DEFAULT_PROFILE})
+    echo "[${yellow}☁ ${AWS_DEFAULT_PROFILE} ${region}${reset}]"
+}
+
+PS1="$(build_prompt)[\w] [\t] $(aws_profile) $(node_version) $(yarn_version) [$?]\n";
