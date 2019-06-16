@@ -240,7 +240,7 @@ function node_version {
     else
         local node_version
         node_version=$(node -v)
-        printf "${green} ⬢ $node_version${reset}"
+        printf "${green}⬢ $node_version${reset}"
     fi
 }
 
@@ -324,4 +324,4 @@ function build_prompt {
     printf "$(custom_build_prompt ${enabled:-true} ${current_commit_hash:-""} ${is_a_git_repo:-false} ${current_branch:-""} ${detached:-false} ${just_init:-false} ${has_upstream:-false} ${has_modifications:-false} ${has_modifications_cached:-false} ${has_adds:-false} ${has_deletions:-false} ${has_deletions_cached:-false} ${has_untracked_files:-false} ${ready_to_commit:-false} ${tag_at_current_commit:-""} ${is_on_a_tag:-false} ${has_upstream:-false} ${commits_ahead:-false} ${commits_behind:-false} ${has_diverged:-false} ${should_push:-false} ${will_rebase:-false} ${has_stashes:-false} ${action})"
 }
 
-PS1="\$(build_prompt)[\w] [\t] [\$(aws_profile)] [\$(node_version)] [\$(yarn_version)] [\$?]\n"
+PS1="\$(build_prompt)[\w] [\t] [\$(aws_profile)] [\$(node_version)] [\$(yarn_version)]\n"
