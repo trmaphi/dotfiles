@@ -16,7 +16,11 @@ fi
 if [ $(uname) = "Darwin" ] && command -v brew &>/dev/null ; then
   BREW_PREFIX=$(brew --prefix)
 
-  for file in ${BREW_PREFIX}/etc/bash_completion.d/* ; do source $file; done 
+  for file in ${BREW_PREFIX}/etc/bash_completion.d/* ; do 
+    if [ -n "$ZSH_VERSION" ] && [ $file != "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
+      source $file;
+    fi
+  done 
 
   # homebrew/versions/bash-completion2 (required for projects.completion.bash) is installed to this path
   if [ "${BASH_VERSINFO}" -ge 4 ] && [ -f "$BREW_PREFIX"/share/bash-completion/bash_completion ]; then
