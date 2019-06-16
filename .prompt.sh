@@ -117,10 +117,6 @@ function eval_prompt_callback_if_present {
         function_exists omg_prompt_callback && echo "$(omg_prompt_callback)"
 }
 
-# Set PS1 PROMPT_COMMAND to empty
-PS1=""
-PROMPT_COMMAND=""
-
 # THEME
 : ${omg_ungit_prompt:=$PS1}
 : ${omg_second_line:=$PS1}
