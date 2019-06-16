@@ -1,3 +1,4 @@
+# Custom alias
 alias bj='bat --theme=TwoDark'
 alias jil='jest --runInBand --lastCommit --detectOpenHandles'
 alias jis='jest --runInBand --changedSince='
@@ -229,7 +230,9 @@ alias ..='cd ..'         # Go up one directory
 alias cd..='cd ..'       # Common misspelling for going up one directory
 alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up three directories
+alias ~='cd ~'           # Cd to HOME directory
 alias -- -='cd -'        # Go back
+alias d='dirs -v'        # Lists last used directories
 
 # Shell History
 alias h='history'
