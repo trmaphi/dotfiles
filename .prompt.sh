@@ -117,6 +117,8 @@ function eval_prompt_callback_if_present {
         function_exists omg_prompt_callback && echo "$(omg_prompt_callback)"
 }
 
+### START TO BUILD PROMPT
+PS1="[\w] [\t] [$(default_aws_profile)]\n";
 PSORG=$PS1;
 PROMPT_COMMAND_ORG=$PROMPT_COMMAND;
 
@@ -126,29 +128,38 @@ if [ -n "${BASH_VERSION}" ]; then
     : ${omg_ungit_prompt:=$PS1}
     : ${omg_second_line:=$PS1}
 
-    : ${omg_is_a_git_repo_symbol:=''}
-    : ${omg_has_untracked_files_symbol:=''}        #                ?    
-    : ${omg_has_adds_symbol:=''}
-    : ${omg_has_deletions_symbol:=''}
-    : ${omg_has_cached_deletions_symbol:=''}
-    : ${omg_has_modifications_symbol:=''}
-    : ${omg_has_cached_modifications_symbol:=''}
-    : ${omg_ready_to_commit_symbol:=''}            #   →
-    : ${omg_is_on_a_tag_symbol:=''}                #   
+    # Symbols
+    : ${omg_is_a_git_repo_symbol:='❤'}
+    : ${omg_has_untracked_files_symbol:='∿'}
+    : ${omg_has_adds_symbol:='+'}
+    : ${omg_has_deletions_symbol:='-'}
+    : ${omg_has_cached_deletions_symbol:='✖'}
+    : ${omg_has_modifications_symbol:='✎'}
+    : ${omg_has_cached_modifications_symbol:='☲'}
+    : ${omg_ready_to_commit_symbol:='→'}
+    : ${omg_is_on_a_tag_symbol:='⌫'}
     : ${omg_needs_to_merge_symbol:='ᄉ'}
-    : ${omg_detached_symbol:=''}
-    : ${omg_can_fast_forward_symbol:=''}
-    : ${omg_has_diverged_symbol:=''}               #   
-    : ${omg_not_tracked_branch_symbol:=''}
-    : ${omg_rebase_tracking_branch_symbol:=''}     #   
-    : ${omg_merge_tracking_branch_symbol:=''}      #  
-    : ${omg_should_push_symbol:=''}                #    
-    : ${omg_has_stashes_symbol:=''}
+    : ${omg_has_upstream_symbol:='⇅'}
+    : ${omg_detached_symbol:='⚯ '}
+    : ${omg_can_fast_forward_symbol:='»'}
+    : ${omg_has_diverged_symbol:='Ⴤ'}
+    : ${omg_rebase_tracking_branch_symbol:='↶'}
+    : ${omg_merge_tracking_branch_symbol:='ᄉ'}
+    : ${omg_should_push_symbol:='↑'}
+    : ${omg_has_stashes_symbol:='★'}
 
     : ${omg_default_color_on:='\[\033[1;37m\]'}
     : ${omg_default_color_off:='\[\033[0m\]'}
     : ${omg_last_symbol_color:='\e[0;31m\e[40m'}
     
+    # Flags
+    : ${omg_display_has_upstream:=false}
+    : ${omg_display_tag:=false}
+    : ${omg_display_tag_name:=true}
+    : ${omg_two_lines:=false}
+    : ${omg_finally:=''}
+    : ${omg_use_color_off:=false}
+
     PROMPT='$(build_prompt)'
     RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
 
@@ -230,9 +241,9 @@ if [ -n "${BASH_VERSION}" ]; then
             prompt+=$(enrich_append $is_a_git_repo $omg_is_a_git_repo_symbol "${black_on_white}")
             prompt+=$(enrich_append $has_stashes $omg_has_stashes_symbol "${yellow_on_white}")
 
-            prompt+=$(enrich_append $has_untracked_files $omg_has_untracked_files_symbol "${red_on_white}")
-            prompt+=$(enrich_append $has_modifications $omg_has_modifications_symbol "${red_on_white}")
-            prompt+=$(enrich_append $has_deletions $omg_has_deletions_symbol "${red_on_white}")
+            prompt+=$(enrich_append $has_untracked_files $omg_has_untracked_files_symbol "${black_on_white}")
+            prompt+=$(enrich_append $has_modifications $omg_has_modifications_symbol "${black_on_white}")
+            prompt+=$(enrich_append $has_deletions $omg_has_deletions_symbol "${black_on_white}")
             
 
             # ready
@@ -242,11 +253,11 @@ if [ -n "${BASH_VERSION}" ]; then
             
             # next operation
 
-            prompt+=$(enrich_append $ready_to_commit $omg_ready_to_commit_symbol "${red_on_white}")
+            prompt+=$(enrich_append $ready_to_commit $omg_ready_to_commit_symbol "${black_on_white}")
 
             # where
 
-            prompt="${prompt} ${white_on_red} ${black_on_red}"
+            prompt="${prompt} ${white_on_red} ${black_on_red}"
             if [[ $detached == true ]]; then
                 prompt+=$(enrich_append $detached $omg_detached_symbol "${white_on_red}")
                 prompt+=$(enrich_append $detached "(${current_commit_hash:0:7})" "${black_on_red}")
@@ -278,7 +289,7 @@ if [ -n "${BASH_VERSION}" ]; then
                 fi
             fi
             prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${black_on_red}")
-            prompt+="${omg_last_symbol_color}${reset}\n"
+            prompt+="${omg_last_symbol_color}${reset}\n"
             prompt+="$(eval_prompt_callback_if_present)"
             prompt+="${omg_second_line}"
         else
