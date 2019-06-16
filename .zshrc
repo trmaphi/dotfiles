@@ -5,6 +5,8 @@ case $- in
     *) return;;
 esac
 
+export SHELL=$(which zsh);
+
 # Missing paths
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
 

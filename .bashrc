@@ -5,6 +5,8 @@ case $- in
     *) return;;
 esac
 
+export SHELL=$(which bash);
+
 # Dotfiles path
 export DOTFILES="${HOME}/dotfiles";
 
