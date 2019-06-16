@@ -139,8 +139,9 @@ function yarn_version {
     fi
 }
 
-### START TO BUILD PROMPT
-PS1="[\w] [\t] [${AWS_DEFAULT_PROFILE}] [node $(node_version)] [yarn $(yarn_version)]\n";
+# Set PS1 PROMPT_COMMAND to empty
+PS1=""
+PROMPT_COMMAND=""
 PSORG=$PS1;
 PROMPT_COMMAND_ORG=$PROMPT_COMMAND;
 
@@ -323,7 +324,9 @@ if [ -n "${BASH_VERSION}" ]; then
     PS2="${yellow}→${reset} "
 
     function bash_prompt() {
+        ### START TO BUILD PROMPT
         PS1="$(build_prompt)"
+        PS1="${PS1}[\w] [\t] [${AWS_DEFAULT_PROFILE}] [node $(node_version)] [yarn $(yarn_version)]\n";
     }
     PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND_ORG"
 
