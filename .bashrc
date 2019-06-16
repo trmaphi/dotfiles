@@ -30,4 +30,8 @@ source "${HOME}/.aliases"
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
 
+if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
+  source "${HOME}/.config.work";
+fi
+
 source "${HOME}/.prompt.sh"
