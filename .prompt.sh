@@ -117,8 +117,30 @@ function eval_prompt_callback_if_present {
         function_exists omg_prompt_callback && echo "$(omg_prompt_callback)"
 }
 
+function node_version {
+    if ! command -v node >/dev/null 2>&1; then
+        echo "NODE NOT EXITS"
+    else
+        local br
+        br=$(node -v)
+        test -n "$br" && printf %s "$br" || :
+    fi
+}
+
+function yarn_version {
+    if ! command -v node >/dev/null 2>&1; then
+        echo "NODE NOT EXITS"
+    elif ! command -v yarn >/dev/null 2>&1; then
+        echo "YARN NOT EXITS"
+    else
+        local br
+        br=$(yarn -v)
+        test -n "$br" && printf %s "$br" || :
+    fi
+}
+
 ### START TO BUILD PROMPT
-PS1="[\w] [\t] [${AWS_DEFAULT_PROFILE}]\n";
+PS1="[\w] [\t] [${AWS_DEFAULT_PROFILE}] [node $(node_version)] [yarn $(yarn_version)]\n";
 PSORG=$PS1;
 PROMPT_COMMAND_ORG=$PROMPT_COMMAND;
 
