@@ -55,6 +55,8 @@ if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
   source "${HOME}/.config.work";
 fi
 
+export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+
 autoload -U promptinit; promptinit
 prompt spaceship
 
