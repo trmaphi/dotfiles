@@ -118,7 +118,7 @@ function eval_prompt_callback_if_present {
 }
 
 ### START TO BUILD PROMPT
-PS1="[\w] [\t] [$(default_aws_profile)]\n";
+PS1="[\w] [\t] [${AWS_DEFAULT_PROFILE}]\n";
 PSORG=$PS1;
 PROMPT_COMMAND_ORG=$PROMPT_COMMAND;
 
@@ -162,7 +162,6 @@ if [ -n "${BASH_VERSION}" ]; then
 
     PROMPT='$(build_prompt)'
     RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
-
     function enrich_append {
         local flag=$1
         local symbol=$2
@@ -299,13 +298,11 @@ if [ -n "${BASH_VERSION}" ]; then
 
         echo "${prompt}"
     }
-    
     PS2="${yellow}→${reset} "
 
     function bash_prompt() {
         PS1="$(build_prompt)"
     }
-
     PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND_ORG"
 
 fi
