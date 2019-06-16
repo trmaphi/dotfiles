@@ -17,8 +17,10 @@ if [ $(uname) = "Darwin" ] && command -v brew &>/dev/null ; then
   BREW_PREFIX=$(brew --prefix)
 
   for file in ${BREW_PREFIX}/etc/bash_completion.d/* ; do 
-    if [ -n "$ZSH_VERSION" ] && [ $file != "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
-      source $file;
+    if [ -n "$ZSH_VERSION" ] && [ "$file" = "${BREW_PREFIX}/etc/bash_completion.d/git-completion.bash" ]; then
+      continue
+    else
+      source $file
     fi
   done 
 
