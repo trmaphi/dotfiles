@@ -29,19 +29,14 @@ if command -v brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-# Load completions
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
+FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-for COMPLETION in ${HOME}/.completions.d/*.completion.bash; do 
-  # Don't load Homebrew completion
-  if [ $COMPLETION = "${HOME}/.completions.d/system.completion.bash" ]; then
-    continue
-  else
-    source $COMPLETION
-  fi
-done
+source "${HOME}/.completions.d/npm.completion.bash"
 
+chmod go-w "$(brew --prefix)/share"
+
+autoload -Uz compinit
+rm -f $HOME/.zcompdump; compinit
 
 # Load custom aliases
 source "${HOME}/.aliases"
@@ -88,7 +83,7 @@ SPACESHIP_PROMPT_ORDER=(
   # ember       # Ember.js section (Disabled)
   # kubecontext   # Kubectl context section
   # terraform     # Terraform workspace section
-  exec_time     # Execution time
+  # exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
   vi_mode     # Vi-mode indicator (Disabled)
@@ -104,7 +99,11 @@ export SPACESHIP_TIME_PREFIX='['
 export SPACESHIP_TIME_SUFFIX=']'
 export SPACESHIP_DIR_PREFIX='['
 export SPACESHIP_DIR_SUFFIX=']'
+export SPACESHIP_GIT_SYMBOL='ᚶ'
 export SPACESHIP_GIT_PREFIX='\n'
+export SPACESHIP_GIT_BRANCH_COLOR='white'
+export SPACESHIP_AWS_SYMBOL="☁ "
+export AWS_PROFILE="${AWS_DEFAULT_PROFILE}"
 export SPACESHIP_EXIT_CODE_SHOW=true
 
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
