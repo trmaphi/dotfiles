@@ -8,8 +8,11 @@
 .vim/.netrwhist
 .vim/plugged/*
 
-#
+# vscode config
 vscode/User/globalStorage/
 vscode/User/globalStorage/
 vscode/User/snippets
 vscode/User/workspaceStorage
+
+# ignore work config
+.config.work
