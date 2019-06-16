@@ -6,7 +6,7 @@ case $- in
 esac
 
 # Dotfiles path
-export DOTFILES="${HOME}/dofiles";
+export DOTFILES="${HOME}/dotfiles";
 
 # Load functions
 source "${HOME}/.functions"
@@ -30,3 +30,4 @@ source "${HOME}/.aliases"
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
 
+source "${HOME}/.prompt.sh"
