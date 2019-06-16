@@ -36,7 +36,7 @@ autoload -U +X bashcompinit && bashcompinit
 for COMPLETION in ${HOME}/.completions.d/*.completion.bash; do 
   # Don't load Homebrew completion
   if [ $COMPLETION = "${HOME}/.completions.d/system.completion.bash" ]; then
-    echo $COMPLETION
+    continue
   else
     source $COMPLETION
   fi

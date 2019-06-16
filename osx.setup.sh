@@ -24,11 +24,14 @@ brew install bash
 PACKAGES=(
     fzf
     git
+    htop
     nvm
     tree
     ripgrep
     vim
     wget
+    zsh
+    zsh-autosuggestions
 )
 echo ""
 echo "Installing packages..."
@@ -45,7 +48,6 @@ CASKS=(
     google-chrome
     slack
     sublime
-    vargant
     visual-studio-code
 )
 echo "Installing cask apps..."
