@@ -153,9 +153,8 @@ function aws_profile {
 # Set PS1 PROMPT_COMMAND to empty
 PS1=""
 PROMPT_COMMAND=""
-PSORG=$PS1;
-PROMPT_COMMAND_ORG=$PROMPT_COMMAND;
 
+# THEME
 : ${omg_ungit_prompt:=$PS1}
 : ${omg_second_line:=$PS1}
 
@@ -327,13 +326,6 @@ function custom_build_prompt {
 
     echo "${prompt}"
 }
-PS2="${yellow}→${reset} "
 
-function bash_prompt() {
-    ### START TO BUILD PROMPT
-    PS1="$(build_prompt)"
-    PS1="${PS1}[\w] [\t] [$(aws_profile)] [$(node_version)] [$(yarn_version)] [$?]\n";
-}
-
-PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND_ORG"
-
+PS1="$(build_prompt)"
+PS1="${PS1}[\w] [\t] [$(aws_profile)] [$(node_version)] [$(yarn_version)] [$?]\n";
