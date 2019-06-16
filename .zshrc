@@ -92,3 +92,5 @@ export SPACESHIP_DIR_PREFIX='['
 export SPACESHIP_DIR_SUFFIX=']'
 export SPACESHIP_GIT_PREFIX='\n'
 export SPACESHIP_EXIT_CODE_SHOW=true
+
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
