@@ -326,7 +326,7 @@ if [ -n "${BASH_VERSION}" ]; then
     function bash_prompt() {
         ### START TO BUILD PROMPT
         PS1="$(build_prompt)"
-        PS1="${PS1}[\w] [\t] [${AWS_DEFAULT_PROFILE}] [node $(node_version)] [yarn $(yarn_version)] [exit $?]\n";
+        PS1="${PS1}[\w] [\t] [${AWS_DEFAULT_PROFILE}] [${AWS_DEFAULT_REGION}] [node $(node_version)] [yarn $(yarn_version)] [exit $?]\n";
     }
     PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND_ORG"
 
