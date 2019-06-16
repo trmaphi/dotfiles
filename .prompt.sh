@@ -48,65 +48,6 @@ function get_current_action () {
     fi
 }
 
-function build_prompt {
-    local enabled=`git config --get oh-my-git.enabled`
-    if [[ ${enabled} == false ]]; then
-        echo "${PSORG}"
-        exit;
-    fi
-
-    local prompt=""
-    
-    # Git info
-    local current_commit_hash=$(git rev-parse HEAD 2> /dev/null)
-    if [[ -n $current_commit_hash ]]; then local is_a_git_repo=true; fi
-    
-    if [[ $is_a_git_repo == true ]]; then
-        local current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-        if [[ $current_branch == 'HEAD' ]]; then local detached=true; fi
-
-        local number_of_logs="$(git log --pretty=oneline -n1 2> /dev/null | wc -l)"
-        if [[ $number_of_logs -eq 0 ]]; then
-            local just_init=true
-        else
-            local upstream=$(git rev-parse --symbolic-full-name --abbrev-ref @{upstream} 2> /dev/null)
-            if [[ -n "${upstream}" && "${upstream}" != "@{upstream}" ]]; then local has_upstream=true; fi
-
-            local git_status="$(git status --porcelain 2> /dev/null)"
-            local action="$(get_current_action)"
-
-            if [[ $git_status =~ ($'\n'|^).M ]]; then local has_modifications=true; fi
-            if [[ $git_status =~ ($'\n'|^)M ]]; then local has_modifications_cached=true; fi
-            if [[ $git_status =~ ($'\n'|^)A ]]; then local has_adds=true; fi
-            if [[ $git_status =~ ($'\n'|^).D ]]; then local has_deletions=true; fi
-            if [[ $git_status =~ ($'\n'|^)D ]]; then local has_deletions_cached=true; fi
-            if [[ $git_status =~ ($'\n'|^)[MAD] && ! $git_status =~ ($'\n'|^).[MAD\?] ]]; then local ready_to_commit=true; fi
-
-            local number_of_untracked_files=$(\grep -c "^??" <<< "${git_status}")
-            if [[ $number_of_untracked_files -gt 0 ]]; then local has_untracked_files=true; fi
-        
-            local tag_at_current_commit=$(git describe --exact-match --tags $current_commit_hash 2> /dev/null)
-            if [[ -n $tag_at_current_commit ]]; then local is_on_a_tag=true; fi
-        
-            if [[ $has_upstream == true ]]; then
-                local commits_diff="$(git log --pretty=oneline --topo-order --left-right ${current_commit_hash}...${upstream} 2> /dev/null)"
-                local commits_ahead=$(\grep -c "^<" <<< "$commits_diff")
-                local commits_behind=$(\grep -c "^>" <<< "$commits_diff")
-            fi
-
-            if [[ $commits_ahead -gt 0 && $commits_behind -gt 0 ]]; then local has_diverged=true; fi
-            if [[ $has_diverged == false && $commits_ahead -gt 0 ]]; then local should_push=true; fi
-        
-            local will_rebase=$(git config --get branch.${current_branch}.rebase 2> /dev/null)
-        
-            local number_of_stashes="$(git stash list -n1 2> /dev/null | wc -l)"
-            if [[ $number_of_stashes -gt 0 ]]; then local has_stashes=true; fi
-        fi
-    fi
-    
-    printf "$(custom_build_prompt ${enabled:-true} ${current_commit_hash:-""} ${is_a_git_repo:-false} ${current_branch:-""} ${detached:-false} ${just_init:-false} ${has_upstream:-false} ${has_modifications:-false} ${has_modifications_cached:-false} ${has_adds:-false} ${has_deletions:-false} ${has_deletions_cached:-false} ${has_untracked_files:-false} ${ready_to_commit:-false} ${tag_at_current_commit:-""} ${is_on_a_tag:-false} ${has_upstream:-false} ${commits_ahead:-false} ${commits_behind:-false} ${has_diverged:-false} ${should_push:-false} ${will_rebase:-false} ${has_stashes:-false} ${action})"
-}
-
 function_exists() {
     declare -f -F $1 > /dev/null
     return $?
@@ -117,6 +58,7 @@ function eval_prompt_callback_if_present {
 }
 
 PS1=""
+
 # THEME
 : ${omg_ungit_prompt:=$PS1}
 : ${omg_second_line:=$PS1}
@@ -323,4 +265,63 @@ function aws_profile {
     printf "${yellow}☁ ${AWS_DEFAULT_PROFILE} ${region}${reset}"
 }
 
-PS1="\$(build_prompt)\n[\w] [\t] [\$(aws_profile)] [\$(node_version)] [\$(yarn_version)] [\$?]\n";
+function build_prompt {
+    local enabled=`git config --get oh-my-git.enabled`
+    if [[ ${enabled} == false ]]; then
+        echo "${PSORG}"
+        exit;
+    fi
+
+    local prompt=""
+    
+    # Git info
+    local current_commit_hash=$(git rev-parse HEAD 2> /dev/null)
+    if [[ -n $current_commit_hash ]]; then local is_a_git_repo=true; fi
+    
+    if [[ $is_a_git_repo == true ]]; then
+        local current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+        if [[ $current_branch == 'HEAD' ]]; then local detached=true; fi
+
+        local number_of_logs="$(git log --pretty=oneline -n1 2> /dev/null | wc -l)"
+        if [[ $number_of_logs -eq 0 ]]; then
+            local just_init=true
+        else
+            local upstream=$(git rev-parse --symbolic-full-name --abbrev-ref @{upstream} 2> /dev/null)
+            if [[ -n "${upstream}" && "${upstream}" != "@{upstream}" ]]; then local has_upstream=true; fi
+
+            local git_status="$(git status --porcelain 2> /dev/null)"
+            local action="$(get_current_action)"
+
+            if [[ $git_status =~ ($'\n'|^).M ]]; then local has_modifications=true; fi
+            if [[ $git_status =~ ($'\n'|^)M ]]; then local has_modifications_cached=true; fi
+            if [[ $git_status =~ ($'\n'|^)A ]]; then local has_adds=true; fi
+            if [[ $git_status =~ ($'\n'|^).D ]]; then local has_deletions=true; fi
+            if [[ $git_status =~ ($'\n'|^)D ]]; then local has_deletions_cached=true; fi
+            if [[ $git_status =~ ($'\n'|^)[MAD] && ! $git_status =~ ($'\n'|^).[MAD\?] ]]; then local ready_to_commit=true; fi
+
+            local number_of_untracked_files=$(\grep -c "^??" <<< "${git_status}")
+            if [[ $number_of_untracked_files -gt 0 ]]; then local has_untracked_files=true; fi
+        
+            local tag_at_current_commit=$(git describe --exact-match --tags $current_commit_hash 2> /dev/null)
+            if [[ -n $tag_at_current_commit ]]; then local is_on_a_tag=true; fi
+        
+            if [[ $has_upstream == true ]]; then
+                local commits_diff="$(git log --pretty=oneline --topo-order --left-right ${current_commit_hash}...${upstream} 2> /dev/null)"
+                local commits_ahead=$(\grep -c "^<" <<< "$commits_diff")
+                local commits_behind=$(\grep -c "^>" <<< "$commits_diff")
+            fi
+
+            if [[ $commits_ahead -gt 0 && $commits_behind -gt 0 ]]; then local has_diverged=true; fi
+            if [[ $has_diverged == false && $commits_ahead -gt 0 ]]; then local should_push=true; fi
+        
+            local will_rebase=$(git config --get branch.${current_branch}.rebase 2> /dev/null)
+        
+            local number_of_stashes="$(git stash list -n1 2> /dev/null | wc -l)"
+            if [[ $number_of_stashes -gt 0 ]]; then local has_stashes=true; fi
+        fi
+    fi
+    
+    printf "$(custom_build_prompt ${enabled:-true} ${current_commit_hash:-""} ${is_a_git_repo:-false} ${current_branch:-""} ${detached:-false} ${just_init:-false} ${has_upstream:-false} ${has_modifications:-false} ${has_modifications_cached:-false} ${has_adds:-false} ${has_deletions:-false} ${has_deletions_cached:-false} ${has_untracked_files:-false} ${ready_to_commit:-false} ${tag_at_current_commit:-""} ${is_on_a_tag:-false} ${has_upstream:-false} ${commits_ahead:-false} ${commits_behind:-false} ${has_diverged:-false} ${should_push:-false} ${will_rebase:-false} ${has_stashes:-false} ${action})"
+}
+
+PS1="\$(build_prompt)[\w] [\t] [\$(aws_profile)] [\$(node_version)] [\$(yarn_version)] [\$?]\n";
