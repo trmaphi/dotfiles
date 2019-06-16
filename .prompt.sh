@@ -118,24 +118,28 @@ function eval_prompt_callback_if_present {
 }
 
 function node_version {
-    if ! command -v node >/dev/null 2>&1; then
+    local green='\e[0;32m'
+    local reset='\e[0m' 
+    if ! command -v node &>/dev/null; then
         echo "NODE NOT EXITS"
     else
-        local br
-        br=$(node -v)
-        test -n "$br" && printf %s "$br" || :
+        local node_version
+        node_version=$(node -v)
+        test -n "$node_version" && printf %s "${green}⬢ $node_version${reset}" || :
     fi
 }
 
 function yarn_version {
-    if ! command -v node >/dev/null 2>&1; then
+    local blue='\e[0;34m'
+    local reset='\e[0m'
+    if ! command -v node &>/dev/null; then
         echo "NODE NOT EXITS"
-    elif ! command -v yarn >/dev/null 2>&1; then
+    elif ! command -v yarn &>/dev/null; then
         echo "YARN NOT EXITS"
     else
-        local br
-        br=$(yarn -v)
-        test -n "$br" && printf %s "$br" || :
+        local yarn_version
+        yarn_version=$(yarn -v)
+        test -n "$yarn_version" && printf %s "${blue}😸 $yarn_version${reset}" || :
     fi
 }
 
@@ -326,7 +330,7 @@ if [ -n "${BASH_VERSION}" ]; then
     function bash_prompt() {
         ### START TO BUILD PROMPT
         PS1="$(build_prompt)"
-        PS1="${PS1}[\w] [\t] [${AWS_DEFAULT_PROFILE}] [${AWS_DEFAULT_REGION}] [node $(node_version)] [yarn $(yarn_version)] [exit $?]\n";
+        PS1="${PS1}[\w] [\t] [${AWS_DEFAULT_PROFILE}] [${AWS_DEFAULT_REGION}] [$(node_version)] [$(yarn_version)] [exit $?]\n";
     }
     PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND_ORG"
 
