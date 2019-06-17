@@ -16,13 +16,8 @@ export DOTFILES="${HOME}/dotfiles";
 # Load functions
 source "${HOME}/.functions"
 
-# Set GO_PATH environment variable
-export GOPATH=$(go env GOPATH)
-
-# Set NVM home and load nvm
-export NVM_DIR="${HOME}/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+# Load custom aliases
+source "${HOME}/.aliases"
 
 # Load Homebrew zsh site-functions
 if command -v brew &>/dev/null; then
@@ -38,18 +33,24 @@ chmod go-w "$(brew --prefix)/share"
 autoload -Uz compinit
 rm -f $HOME/.zcompdump; compinit
 
-# Load custom aliases
-source "${HOME}/.aliases"
-
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
 
-# # Set work config
+# Set work config
 HOSTNAME=$(hostname)
 if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
   source "${HOME}/.config.work";
 fi
 
+# Set GO_PATH environment variable
+export GOPATH=$(go env GOPATH)
+
+# Set NVM home and load nvm
+export NVM_DIR="${HOME}/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# prompt config
 export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
 
 autoload -U promptinit; promptinit
@@ -103,7 +104,6 @@ export SPACESHIP_GIT_SYMBOL='ᚶ'
 export SPACESHIP_GIT_PREFIX='\n'
 export SPACESHIP_GIT_BRANCH_COLOR='white'
 export SPACESHIP_AWS_SYMBOL="☁ "
-export AWS_PROFILE="${AWS_DEFAULT_PROFILE}"
 export SPACESHIP_EXIT_CODE_SHOW=true
 
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
