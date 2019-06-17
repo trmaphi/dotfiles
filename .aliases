@@ -1,11 +1,5 @@
 # Custom alias
 alias bj='bat --theme=TwoDark'
-alias jil='jest --runInBand --lastCommit --detectOpenHandles'
-alias jis='jest --runInBand --changedSince='
-alias ji='jest --runInBand --detectOpenHandles'
-alias yjil='yarn jest --runInBand --lastCommit --detectOpenHandles'
-alias yjis='yarn jest --runInBand --changedSince'
-alias yji='yarn jest --runInBand --detectOpenHandles'
 
 # Git alias
 alias g='git'
