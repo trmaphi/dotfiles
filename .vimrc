@@ -34,7 +34,3 @@ set smartcase                   " ... unless they contain at least one capital l
 ""   autocmd!
 ""   autocmd VimEnter * :Vexplore  " open vim in vertical split
 "" augroup END
-
-"" Load vim-plug
-call plug#begin('~/.vim/plugged')
-call plug#end()
