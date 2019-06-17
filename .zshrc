@@ -106,4 +106,5 @@ export SPACESHIP_GIT_BRANCH_COLOR='white'
 export SPACESHIP_AWS_SYMBOL="☁ "
 export SPACESHIP_EXIT_CODE_SHOW=true
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -e "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && 
+source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
