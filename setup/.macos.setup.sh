@@ -17,17 +17,24 @@ brew update
 # Install core utils
 brew install coreutils
 
-# Install Bash 4
-brew install bash
+# Tap of dive
+brew tap wagoodman/dive
 
 # Install essential packages
 PACKAGES=(
+    bash
+    dive
+    fd
     fzf
     git
+    goaccess
     htop
+    httpie
+    jq
     nvm
-    tree
     ripgrep
+    tldr
+    tree
     vim
     wget
     zsh
@@ -45,9 +52,12 @@ echo "Installing cask..."
 brew install caskroom/cask/brew-cask
 CASKS=(
     docker-toolbox
+    drawio
     google-chrome
+    iterm2
+    ngrok
+    postman
     slack
-    sublime
     visual-studio-code
 )
 echo "Installing cask apps..."
