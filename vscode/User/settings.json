@@ -9,7 +9,7 @@
     "breadcrumbs.enabled": true,
     "editor.fontFamily": "monaco, devicon",
     "editor.fontSize": 12,
-    "editor.fontWeight": "600",
+    "editor.fontWeight": "400",
     "editor.suggestSelection": "first",
     "[json]": {
         "editor.formatOnSave": false
