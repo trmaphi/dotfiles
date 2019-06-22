@@ -245,9 +245,9 @@ function node_version {
         local green='\e[0;32m'
         local reset='\e[0m' 
         local node_version=$(node -v)
-        printf "${green}⬢ ${node_version}${reset}"
+        printf "${green}  ${node_version}${reset}"
     else
-        printf "⬢"
+        printf " "
     fi
 }
 
@@ -256,9 +256,9 @@ function yarn_version {
         local blue='\e[0;34m'
         local reset='\e[0m'
         local yarn_version=$(yarn -v)
-        printf "${blue}😸 $yarn_version${reset}"
+        printf "${blue}  $yarn_version${reset}"
     else
-        printf "😸"
+        printf " "
     fi
 }
 
@@ -267,9 +267,9 @@ function aws_profile {
         local yellow='\e[0;33m'
         local reset='\e[0m'
         local region=$(aws configure get region --profile ${AWS_PROFILE})
-        printf "${yellow}☁ ${AWS_PROFILE} ${region}${reset}"
+        printf "${yellow}  ${AWS_PROFILE} ${region}${reset}"
     else
-        printf "☁"
+        printf " "
     fi
 }
 

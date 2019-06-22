@@ -3,26 +3,25 @@
     // UPDATE 
     "update.mode": "manual",
     "extensions.autoCheckUpdates": false,
-
     // EDITOR
     "editor.renderWhitespace": "boundary",
     "editor.formatOnSave": true,
+    "breadcrumbs.enabled": true,
+    "editor.fontFamily": "monaco, devicon",
+    "editor.fontSize": 12,
+    "editor.fontWeight": "600",
+    "editor.suggestSelection": "first",
     "[json]": {
-    "editor.formatOnSave": false
+        "editor.formatOnSave": false
     },
     "[jsonc]": {
-    "editor.formatOnSave": false
+        "editor.formatOnSave": false
     },
-    "breadcrumbs.enabled": true,
-    "editor.suggestSelection": "first",
-    
     // THEME
     "workbench.colorTheme": "One Dark Pro",
-
     // TERMINAL
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.macOptionIsMeta": true,
-    "editor.fontSize": 12,
-    "editor.fontWeight": "600"
+    "terminal.integrated.fontFamily": "monaco, devicon";
 }

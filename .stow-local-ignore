@@ -27,8 +27,10 @@ _darcs
 # vscode
 vscode
 
+# setup
+setup
+
 # setup scripts
-setup.sh
 osx.setup.sh
 
 ^/README.*
