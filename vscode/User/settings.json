@@ -18,11 +18,13 @@
     
     // THEME
     "workbench.colorTheme": "One Dark Pro",
-    "editor.fontWeight": "500",
 
     // TERMINAL
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-    "terminal.integrated.fontFamily": "Fira Code",
     "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.macOptionIsMeta": true
+    "terminal.integrated.macOptionIsMeta": true,
+    "editor.fontSize": 12,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Hack Nerd Font Complete, Hack Nerd Font Complete, 'Courier New', monospace",
+    "editor.fontWeight": "bold"
 }
