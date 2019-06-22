@@ -24,7 +24,5 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.macOptionIsMeta": true,
     "editor.fontSize": 12,
-    "editor.fontLigatures": true,
-    "editor.fontFamily": "Hack Nerd Font Complete, Hack Nerd Font Complete, 'Courier New', monospace",
-    "editor.fontWeight": "bold"
+    "editor.fontWeight": "600"
 }
