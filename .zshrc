@@ -55,6 +55,27 @@ export NVM_DIR="${HOME}/.nvm"
 
 # prompt config
 export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+export SPACESHIP_PROMPT_DEFAULT_PREFIX='['
+export SPACESHIP_PROMPT_DEFAULT_SUFFIX=']'
+export SPACESHIP_GIT_SYMBOL='[ '
+export SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_TIME_PREFIX='['
+# export SPACESHIP_TIME_SUFFIX=']'
+export SPACESHIP_DIR_PREFIX='['
+# export SPACESHIP_DIR_SUFFIX=']'
+export SPACESHIP_CHAR_SYMBOL=''
+# export SPACESHIP_NODE_PREFIX='['
+# export SPACESHIP_NODE_SUFFIX=']'
+export SPACESHIP_GIT_SUFFIX=''
+export SPACESHIP_GIT_BRANCH_SUFFIX=']'
+export SPACESHIP_DOCKER_PREFIX='['
+export SPACESHIP_GIT_PREFIX='\n'
+export SPACESHIP_GIT_BRANCH_COLOR='white'
+export SPACESHIP_NODE_SYMBOL=' '
+export SPACESHIP_AWS_SYMBOL=" "
+export SPACESHIP_DOCKER_SYMBOL=" "
+export SPACESHIP_EXIT_CODE_SHOW=true
 
 autoload -U promptinit; promptinit
 prompt spaceship
@@ -95,22 +116,6 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
-
-export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_TIME_SHOW=true
-export SPACESHIP_TIME_PREFIX='['
-export SPACESHIP_TIME_SUFFIX=']'
-export SPACESHIP_DIR_PREFIX='['
-export SPACESHIP_DIR_SUFFIX=']'
-export SPACESHIP_CHAR_SYMBOL=''
-export SPACESHIP_NODE_PREFIX='['
-export SPACESHIP_NODE_SUFFIX='] '
-export SPACESHIP_GIT_SYMBOL=' '
-export SPACESHIP_GIT_PREFIX='\n'
-export SPACESHIP_GIT_BRANCH_COLOR='white'
-export SPACESHIP_AWS_SYMBOL=" "
-export SPACESHIP_DOCKER_SYMBOL=" "
-export SPACESHIP_EXIT_CODE_SHOW=true
 
 [ -e "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && 
 source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
