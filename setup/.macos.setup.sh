@@ -93,4 +93,9 @@ echo "Loading spaceship-prompt for zsh"
 git submodule init && git submodule update
 ln -sf "~/dotfiles/.spaceship-prompt/spaceship.zsh" "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
 
+echo ""
+echo "Replace vscode default settings with new settings"
+rm -rf ~/Library/Application\ Support/Code/User/
+ln -s ~/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
+
 echo "Bootstrapping complete"
