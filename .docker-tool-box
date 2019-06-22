@@ -77,9 +77,9 @@ echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine 
 echo "For help getting started, check out the docs at https://docs.docker.com"
 echo
 
-USER_SHELL="$(dscl /Search -read /Users/${USER} UserShell | awk '{print $2}' | head -n 1)"
-if [[ "${USER_SHELL}" == *"/bash"* ]] || [[ "${USER_SHELL}" == *"/zsh"* ]] || [[ "${USER_SHELL}" == *"/sh"* ]]; then
-  "${SHELL}" --login
-else
-  "${USER_SHELL}"
-fi
+# USER_SHELL="$(dscl /Search -read /Users/${USER} UserShell | awk '{print $2}' | head -n 1)"
+# if [[ "${USER_SHELL}" == *"/bash"* ]] || [[ "${USER_SHELL}" == *"/zsh"* ]] || [[ "${USER_SHELL}" == *"/sh"* ]]; then
+#   "${SHELL}" --login
+# else
+#   "${USER_SHELL}"
+# fi
