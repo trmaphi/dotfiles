@@ -22,6 +22,7 @@
 
     // TERMINAL
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+    "terminal.integrated.fontFamily": "Fira Code",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.macOptionIsMeta": true
 }
