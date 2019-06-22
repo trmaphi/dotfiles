@@ -261,8 +261,8 @@ function yarn_version {
 function aws_profile {
     local yellow='\e[0;33m'
     local reset='\e[0m'
-    local region=$(aws configure get region --profile ${AWS_DEFAULT_PROFILE})
-    printf "${yellow}☁ ${AWS_DEFAULT_PROFILE} ${region}${reset}"
+    local region=$(aws configure get region --profile ${AWS_PROFILE})
+    printf "${yellow}☁ ${AWS_PROFILE} ${region}${reset}"
 }
 
 function build_prompt {
