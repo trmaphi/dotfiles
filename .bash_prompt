@@ -232,37 +232,45 @@ function custom_build_prompt {
     printf "${prompt}"
 }
 
+function is_a_git_repo {
+    if [ -d .git ]; then
+        return 0;
+    else
+        return 1;
+    fi
+}
+
 function node_version {
-    local green='\e[0;32m'
-    local reset='\e[0m' 
-    # if ! command -v node &>/dev/null; then
-    #     echo "NODE NOT EXITS"
-    # else
-    local node_version
-    node_version=$(node -v)
-    printf "${green}⬢ $node_version${reset}"
-    # fi
+    if is_a_git_repo ; then
+        local green='\e[0;32m'
+        local reset='\e[0m' 
+        local node_version=$(node -v)
+        printf "${green}⬢ ${node_version}${reset}"
+    else
+        printf "⬢"
+    fi
 }
 
 function yarn_version {
-    local blue='\e[0;34m'
-    local reset='\e[0m'
-    # if ! command -v node &>/dev/null; then
-    #     echo "NODE NOT EXITS"
-    # elif ! command -v yarn &>/dev/null; then
-    #     echo "YARN NOT EXITS"
-    # else
-    local yarn_version
-    yarn_version=$(yarn -v)
-    printf "${blue}😸 $yarn_version${reset}"
-    # fi
+    if is_a_git_repo ; then
+        local blue='\e[0;34m'
+        local reset='\e[0m'
+        local yarn_version=$(yarn -v)
+        printf "${blue}😸 $yarn_version${reset}"
+    else
+        printf "😸"
+    fi
 }
 
 function aws_profile {
-    local yellow='\e[0;33m'
-    local reset='\e[0m'
-    local region=$(aws configure get region --profile ${AWS_PROFILE})
-    printf "${yellow}☁ ${AWS_PROFILE} ${region}${reset}"
+    if is_a_git_repo ; then
+        local yellow='\e[0;33m'
+        local reset='\e[0m'
+        local region=$(aws configure get region --profile ${AWS_PROFILE})
+        printf "${yellow}☁ ${AWS_PROFILE} ${region}${reset}"
+    else
+        printf "☁"
+    fi
 }
 
 function build_prompt {
