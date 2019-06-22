@@ -5,7 +5,7 @@ if [ $(uname) = "Darwin" ] ; then
 	
 	# Load linux vm in Docker toolbox
 	load-docker-toolbox(){
-		. ${HOME}/.docker-tool-box
+		. ${HOME}/.scripts/.docker-tool-box
 	}
 fi
 
