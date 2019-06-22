@@ -97,16 +97,19 @@ SPACESHIP_PROMPT_ORDER=(
 )
 
 export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_CHAR_SYMBOL=''
 export SPACESHIP_TIME_SHOW=true
 export SPACESHIP_TIME_PREFIX='['
 export SPACESHIP_TIME_SUFFIX=']'
 export SPACESHIP_DIR_PREFIX='['
 export SPACESHIP_DIR_SUFFIX=']'
-export SPACESHIP_GIT_SYMBOL='ᚶ'
+export SPACESHIP_CHAR_SYMBOL=''
+export SPACESHIP_NODE_PREFIX='['
+export SPACESHIP_NODE_SUFFIX='] '
+export SPACESHIP_GIT_SYMBOL=' '
 export SPACESHIP_GIT_PREFIX='\n'
 export SPACESHIP_GIT_BRANCH_COLOR='white'
-export SPACESHIP_AWS_SYMBOL="☁ "
+export SPACESHIP_AWS_SYMBOL=" "
+export SPACESHIP_DOCKER_SYMBOL=" "
 export SPACESHIP_EXIT_CODE_SHOW=true
 
 [ -e "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && 
