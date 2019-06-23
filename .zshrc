@@ -16,6 +16,9 @@ export DOTFILES="${HOME}/dotfiles";
 # Load functions
 source "${HOME}/.functions"
 
+# Load functions onyl for zsh 
+source "${HOME}/.zsh/.functions.zsh"
+
 # Load custom aliases
 source "${HOME}/.aliases"
 
