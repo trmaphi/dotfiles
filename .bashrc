@@ -25,10 +25,33 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # Load completions
-for FILE in ${HOME}/.completions.d/*.completion.bash; do 
-  source $FILE
-done
+# Loads the system's Bash completion modules.
+# If Homebrew is installed (OS X), its Bash completion modules are loaded.
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
 
+# Some distribution makes use of a profile.d script to import completion.
+if [ -f /etc/profile.d/bash_completion.sh ]; then
+  . /etc/profile.d/bash_completion.sh
+fi
+
+if [ $(uname) = "Darwin" ] && command -v brew &>/dev/null ; then
+  HOMEBREW_PREFIX=$(brew --prefix)
+
+  for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*; do
+    [[ -f $COMPLETION ]] && source "$COMPLETION"
+  done
+  
+  if [[ -f ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  fi
+fi
+
+for CUSTOM_COMPLETION in "$HOME"/.completions.d/*; do
+  [[ -f $CUSTOM_COMPLETION ]] && source "$CUSTOM_COMPLETION"
+done
+    
 # Load custom aliases
 source "${HOME}/.aliases"
 
