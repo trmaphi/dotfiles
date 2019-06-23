@@ -72,6 +72,7 @@ export SPACESHIP_GIT_PREFIX='\n'
 export SPACESHIP_GIT_BRANCH_SUFFIX=']'
 export SPACESHIP_GIT_BRANCH_COLOR='255'
 export SPACESHIP_GIT_STATUS_PREFIX='['
+export SPACESHIP_GIT_STATUS_MODIFIED='✎'
 export SPACESHIP_NODE_SYMBOL=' '
 export SPACESHIP_AWS_PREFIX='['
 export SPACESHIP_AWS_SYMBOL=" "
@@ -88,10 +89,12 @@ SPACESHIP_PROMPT_ORDER=(
   # user          # Username section
   dir           # Current directory section
   # host          # Hostname section
+  aws           # Amazon Web Services section
+  node          # Node.js section
+  docker      # Docker section (Disabled)
   git           # Git section (git_branch + git_status)
   # hg            # Mercurial section (hg_branch  + hg_status)
   # package     # Package version (Disabled)
-  node          # Node.js section
   # ruby          # Ruby section
   # elixir        # Elixir section
   # xcode       # Xcode section (Disabled)
@@ -101,8 +104,6 @@ SPACESHIP_PROMPT_ORDER=(
   # rust          # Rust section
   # haskell       # Haskell Stack section
   # julia       # Julia section (Disabled)
-  docker      # Docker section (Disabled)
-  aws           # Amazon Web Services section
   # venv          # virtualenv section
   # conda         # conda virtualenv section
   # pyenv         # Pyenv section
@@ -113,7 +114,7 @@ SPACESHIP_PROMPT_ORDER=(
   # exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
-  vi_mode     # Vi-mode indicator (Disabled)
+  # vi_mode     # Vi-mode indicator (Disabled)
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character
