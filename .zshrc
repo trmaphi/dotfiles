@@ -26,8 +26,6 @@ fi
 
 FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-source "${HOME}/.completions.d/npm.completion.bash"
-
 chmod go-w "$(brew --prefix)/share"
 
 autoload -Uz compinit
