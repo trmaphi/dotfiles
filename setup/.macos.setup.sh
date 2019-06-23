@@ -23,6 +23,7 @@ brew tap wagoodman/dive
 # Install essential packages
 PACKAGES=(
     bash
+    bash-completion@2
     dive
     fd
     fzf
