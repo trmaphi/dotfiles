@@ -14,5 +14,6 @@ vscode/User/globalStorage/
 vscode/User/snippets
 vscode/User/workspaceStorage
 
-# ignore work config
-.config.work
+# ignore private configs
+.personal.config
+.work.config
