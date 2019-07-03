@@ -17,11 +17,9 @@
     "[jsonc]": {
         "editor.formatOnSave": false
     },
-    // THEME
-    "workbench.colorTheme": "One Dark Pro",
     // TERMINAL
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.macOptionIsMeta": true,
-    "terminal.integrated.fontFamily": "monaco, devicon";
+    "terminal.integrated.fontFamily": "monaco, devicon"
 }
