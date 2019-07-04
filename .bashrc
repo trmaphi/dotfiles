@@ -59,7 +59,7 @@ export PATH=$PATH:${HOME}/Projects/depot_tools
 
 # Load work config
 if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
-  source "${HOME}/.config.work";
+  source "${HOME}/.work.config";
 fi
 
 # Load prompt

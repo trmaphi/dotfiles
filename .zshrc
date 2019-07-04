@@ -43,7 +43,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Set work config
 HOSTNAME=$(hostname)
 if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
-  source "${HOME}/.config.work";
+  source "${HOME}/.work.config";
 fi
 
 # Set GO_PATH environment variable
