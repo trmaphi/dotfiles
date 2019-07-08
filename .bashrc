@@ -62,9 +62,6 @@ if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
   source "${HOME}/.work.config";
 fi
 
-# Load prompt
-source "${HOME}/.bash_prompt"
-
 # Save 5,000 lines of history in memory
 HISTSIZE=10000
 # Save 2,000,000 lines of history to disk (will have to grep ~/.bash_history for full listing)
