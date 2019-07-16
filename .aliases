@@ -260,3 +260,7 @@ alias xt="extract"
 # sudo editors
 alias svim="sudo vim"
 alias snano="sudo nano"
+
+# Lazygit & Lazydocker
+alias lg='lazygit'
+alias lzd='lazydocker'
