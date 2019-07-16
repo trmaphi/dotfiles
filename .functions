@@ -15,7 +15,7 @@ set-git-config-personal() {
 	git config core.editor "vim"
 }
 
-get-git-current-upstream-branch() {
+get-git-current-remote-branch() {
 	git rev-parse --abbrev-ref --symbolic-full-name @{u}
 }
 
