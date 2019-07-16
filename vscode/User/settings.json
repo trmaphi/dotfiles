@@ -6,7 +6,6 @@
     // EDITOR
     "editor.renderWhitespace": "boundary",
     "editor.formatOnSave": true,
-    "breadcrumbs.enabled": true,
     "editor.fontFamily": "monaco, devicon",
     "editor.fontSize": 12,
     "editor.fontWeight": "400",
