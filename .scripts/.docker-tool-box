@@ -19,8 +19,6 @@ if  [[ $all_proxy != socks* ]]; then
   unset all_proxy
 fi
 
-clear
-
 if [ ! -f "${DOCKER_MACHINE}" ]; then
   echo "Docker Machine is not installed. Please re-run the Toolbox Installer and try again."
   exit 1
