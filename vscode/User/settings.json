@@ -10,12 +10,16 @@
     "editor.fontSize": 12,
     "editor.fontWeight": "400",
     "editor.suggestSelection": "first",
+
+    // LANGUAGES SPECIFIC
     "[json]": {
         "editor.formatOnSave": false
     },
     "[jsonc]": {
         "editor.formatOnSave": false
     },
+    "typescript.preferences.quoteStyle": "single",
+
     // TERMINAL
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.integrated.copyOnSelection": true,
