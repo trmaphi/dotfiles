@@ -1,4 +1,3 @@
-### Bash-it configuration
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
@@ -6,6 +5,9 @@ case $- in
 esac
 
 export SHELL=$(which bash);
+
+# GNU binary path
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Dotfiles path
 export DOTFILES="${HOME}/dotfiles";

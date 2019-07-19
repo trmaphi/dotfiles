@@ -7,7 +7,7 @@ esac
 export SHELL=$(which zsh);
 
 # Missing paths
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
+PATH=/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
 
 # Dotfiles path
 export DOTFILES="${HOME}/dotfiles";
