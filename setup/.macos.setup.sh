@@ -29,6 +29,7 @@ PACKAGES=(
     fzf
     git
     goaccess
+    gnu-sed
     htop
     httpie
     jq
