@@ -31,6 +31,9 @@ chmod go-w "$(brew --prefix)/share"
 autoload -Uz compinit
 rm -f $HOME/.zcompdump; compinit
 
+# Load custom npm completions
+source "${HOME}/.zsh/.npm.completions.zsh"
+
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
 
