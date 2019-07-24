@@ -46,6 +46,10 @@ if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
   source "${HOME}/.work.config";
 fi
 
+if [ "${HOSTNAME}" = "Truong-MB.local" ]; then
+  source "${HOME}/.personal.config";
+fi
+
 # Set GO_PATH environment variable
 export GOPATH=$(go env GOPATH)
 
