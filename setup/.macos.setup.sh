@@ -88,12 +88,7 @@ defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.Web
 
 echo ""
 echo "Creating WORKSPACE folder structure..."
-[[ ! -d workspace ]] && mkdir workspace
-
-echo ""
-echo "Loading spaceship-prompt for zsh"
-git submodule init && git submodule update
-ln -sf "~/dotfiles/.spaceship-prompt/spaceship.zsh" "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
+[[ ! -d sources ]] && mkdir sources
 
 echo ""
 echo "Replace vscode default settings with new settings"
