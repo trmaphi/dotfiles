@@ -56,7 +56,6 @@ fi
 
 eval "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"
 
-clear
 cat << EOF
 
 
