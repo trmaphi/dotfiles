@@ -30,6 +30,7 @@ PACKAGES=(
     git
     goaccess
     gnu-sed
+    grep
     htop
     httpie
     jq
