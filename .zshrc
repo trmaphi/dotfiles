@@ -42,13 +42,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set work config
 HOSTNAME=$(hostname)
-if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
-  source "${HOME}/.work.config";
-fi
 
-if [ "${HOSTNAME}" = "Truong-MB.local" ]; then
-  source "${HOME}/.personal.config";
-fi
+source "${HOME}/.private.config";
 
 # Set GO_PATH environment variable
 export GOPATH=$(go env GOPATH)
