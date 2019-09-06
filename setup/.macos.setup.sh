@@ -26,6 +26,7 @@ PACKAGES=(
     bash-completion@2
     dive
     fd
+    findutils
     fzf
     git
     goaccess
