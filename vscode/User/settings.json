@@ -1,6 +1,8 @@
 {
+    "files.trimTrailingWhitespace": true,
+
     "window.zoomLevel": 0,
-    // UPDATE 
+    // UPDATE
     "update.mode": "manual",
     "extensions.autoCheckUpdates": false,
     // EDITOR
