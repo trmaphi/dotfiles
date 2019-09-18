@@ -7,7 +7,7 @@ esac
 export SHELL=$(which zsh);
 
 # Missing paths
-PATH=/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/share/python:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
+PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
 
 # Dotfiles path
 export DOTFILES="${HOME}/dotfiles";
@@ -34,25 +34,40 @@ rm -f $HOME/.zcompdump; compinit
 # Load custom npm completions
 source "${HOME}/.zsh/.npm.completions.zsh"
 
-# Depot_tools path
-export PATH=$PATH:${HOME}/Projects/depot_tools
-
-# Set path cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+[ -e "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] &&
+source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
 
 # Set work config
 HOSTNAME=$(hostname)
 
 source "${HOME}/.private.config";
 
+### Tools paths
+
 # Set GO_PATH environment variable
 export GOPATH=$(go env GOPATH)
+
+# Depot_tools path
+export PATH=$PATH:${HOME}/Projects/depot_tools
+
+# Set path cargo
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set NVM home and load nvm
 export NVM_DIR="${HOME}/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
-# prompt config
+###
+
+### Patches
+
+# realine
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+####
+
+### prompt config
 export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
 export SPACESHIP_PROMPT_DEFAULT_PREFIX='['
 export SPACESHIP_PROMPT_DEFAULT_SUFFIX=']'
@@ -118,9 +133,6 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
-
-[ -e "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && 
-source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
 
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
