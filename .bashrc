@@ -43,7 +43,7 @@ if [ $(uname) = "Darwin" ] && command -v brew &>/dev/null ; then
   for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*; do
     [[ -f $COMPLETION ]] && source "$COMPLETION"
   done
-  
+
   if [[ -f ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh ]]; then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
   fi
@@ -52,17 +52,14 @@ fi
 for CUSTOM_COMPLETION in "$HOME"/.completions.d/*; do
   [[ -f $CUSTOM_COMPLETION ]] && source "$CUSTOM_COMPLETION"
 done
-    
+
 # Load custom aliases
 source "${HOME}/.aliases"
 
 # Depot_tools path
 export PATH=$PATH:${HOME}/Projects/depot_tools
 
-# Load work config
-if [ "${HOSTNAME}" = "Lecle-VN-phi.local" ]; then
-  source "${HOME}/.work.config";
-fi
+source "${HOME}/.private.config";
 
 # Save 5,000 lines of history in memory
 HISTSIZE=10000
