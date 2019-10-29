@@ -15,4 +15,4 @@ vscode/User/snippets
 vscode/User/workspaceStorage
 
 # ignore private configs
-.private.config
+.private.config.sh

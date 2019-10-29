@@ -1,12 +1,12 @@
-# Mac OS X 
-.DS_Store 
+# Mac OS X
+.DS_Store
 
 RCS
 .+,v
 
 # CVS conflict files / emacs lock files
 CVS
-\.\#.+       
+\.\#.+
 \.cvsignore
 
 # Subversion and mercurial
@@ -20,9 +20,9 @@ _darcs
 \.gitmodules
 
 # emacs backup files
-.+~    
-# emacs autosave files     
-\#.*\#      
+.+~
+# emacs autosave files
+\#.*\#
 
 # vscode
 vscode
@@ -37,3 +37,4 @@ osx.setup.sh
 ^/LICENSE.*
 ^/COPYING
 
+\.bashrc
