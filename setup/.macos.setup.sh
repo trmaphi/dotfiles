@@ -37,6 +37,7 @@ PACKAGES=(
     jq
     nvm
     ripgrep
+    stow
     tldr
     tree
     vim
@@ -55,7 +56,7 @@ echo ""
 echo "Installing cask..."
 brew install caskroom/cask/brew-cask
 CASKS=(
-    docker-toolbox
+    copyq
     drawio
     google-chrome
     iterm2
@@ -63,6 +64,8 @@ CASKS=(
     postman
     slack
     visual-studio-code
+    # docker-toolbox requires extra manual config
+    docker-toolbox
 )
 echo "Installing cask apps..."
 brew cask install ${CASKS[@]}
