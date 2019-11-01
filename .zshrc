@@ -42,18 +42,7 @@ source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
 # Set work config
 HOSTNAME=$(hostname)
 
-source "${HOME}/.private.config";
-
-### Tools paths
-
-# Set GO_PATH environment variable
-export GOPATH=$(go env GOPATH)
-
-# Depot_tools path
-export PATH=$PATH:${HOME}/Projects/depot_tools
-
-# Set path cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+source "${HOME}/.private.config.sh";
 
 # Set NVM home and load nvm
 export NVM_DIR="${HOME}/.nvm"
@@ -63,7 +52,7 @@ export NVM_DIR="${HOME}/.nvm"
 
 ### Patches
 
-# realine
+# readline / sqllite
 export LDFLAGS="-L/usr/local/opt/readline/lib"
 export CPPFLAGS="-I/usr/local/opt/readline/include"
 
