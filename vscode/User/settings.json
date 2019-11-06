@@ -27,5 +27,4 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.macOptionIsMeta": true,
     "terminal.integrated.fontFamily": "monaco, devicon",
-    "workbench.colorTheme": "Solarized Dark"
 }
