@@ -1,0 +1,7 @@
+#!/usr/bin/osascript
+
+on run argv
+    tell application "Messages"
+        send ""&(item 1 of argv)&"" to buddy "Truong Ma Phi"
+    end tell
+end run
