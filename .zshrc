@@ -11,6 +11,8 @@ export LESS="-R"
 # Missing paths
 PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
 
+PATH=${HOME}/.bin:${PATH}
+
 # Dotfiles path
 export DOTFILES="${HOME}/dotfiles";
 
