@@ -100,4 +100,8 @@ echo "Replace vscode default settings with new settings"
 rm -rf ~/Library/Application\ Support/Code/User/
 ln -s ~/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
+echo ""
+echo "Create private config" 
+touch ~/private.config.sh
+
 echo "Bootstrapping complete"
