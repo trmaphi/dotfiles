@@ -11,7 +11,10 @@ For spaceship-prompt
 ```bash
 git submodule update --init --recursive && \
 ln -sf "$PWD/.spaceship-prompt/spaceship.zsh" \
-"/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
+"/usr/local/share/zsh/site-functions/prompt_spaceship_setup" && \
+cd /Library/Fonts && \
+curl -LJO https://github.com/konpa/devicon/raw/master/fonts/devicon.ttf && \
+cd -
 ```
 
 ## Authors
