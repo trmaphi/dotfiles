@@ -1,4 +1,4 @@
 [submodule ".spaceship-prompt"]
 	path = .spaceship-prompt
-	url = git@github.com:trmaphi/spaceship-prompt.git
+	url = https://github.com/trmaphi/spaceship-prompt.git
 	branch = master
