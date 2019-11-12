@@ -46,6 +46,7 @@ PACKAGES=(
     wget
     zsh
     zsh-autosuggestions
+    zsh-completions
 )
 echo ""
 echo "Installing packages..."
