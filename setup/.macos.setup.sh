@@ -22,23 +22,25 @@ brew tap wagoodman/dive
 
 # Install essential packages
 PACKAGES=(
+    bat # https://github.com/sharkdp/bat
     bash
     bash-completion@2
-    dive
+    dive # https://github.com/wagoodman/dive
     fd
     findutils
-    fzf
+    fzf # https://github.com/junegunn/fzf
     git
-    goaccess
+    goaccess # https://github.com/allinurl/goaccess
     gnu-sed
     grep
-    htop
-    httpie
-    jq
+    htop # https://github.com/hishamhm/htop
+    httpie  # https://github.com/jakubroztocil/httpie
+    jq # https://github.com/stedolan/jq
     nvm
     ripgrep
     stow
     tldr
+    tmux
     tree
     vim
     wget
