@@ -65,7 +65,7 @@ CASKS=(
     slack
     visual-studio-code
     # docker-toolbox requires extra manual config
-    docker-toolbox
+    # docker-toolbox
 )
 echo "Installing cask apps..."
 brew cask install ${CASKS[@]}
@@ -101,7 +101,7 @@ rm -rf ~/Library/Application\ Support/Code/User/
 ln -s ~/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
 echo ""
-echo "Create private config" 
+echo "Create private config"
 touch ~/private.config.sh
 
 echo "Bootstrapping complete"
