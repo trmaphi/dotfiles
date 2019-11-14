@@ -17,7 +17,7 @@ PATH=${HOME}/.bin:${PATH}
 export DOTFILES="${HOME}/dotfiles";
 
 # Load functions
-source "${HOME}/.functions"
+source "${HOME}/.functions.sh"
 source "${HOME}/.zsh/.functions.zsh"
 
 # Load aliases
