@@ -13,7 +13,7 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export DOTFILES="${HOME}/dotfiles";
 
 # Load functions
-source "${HOME}/.functions"
+source "${HOME}/.functions.sh"
 
 # Set GO_PATH environment variable
 export GOPATH=$(go env GOPATH)
