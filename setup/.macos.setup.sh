@@ -73,7 +73,6 @@ CASKS=(
 echo "Installing cask apps..."
 brew cask install ${CASKS[@]}
 
-# Install fonts
 echo "###############################################################################"
 echo "# Configuring OSX..."
 echo "###############################################################################"
@@ -83,6 +82,11 @@ echo "Enabling tap to click"
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write 'Apple Global Domain' com.apple.mouse.tapBehavior 1
+
+echo ""
+echo "Change screenshots location"
+mkdir ~/Pictures/Screenshots && \
+defaults write com.apple.screencapture location ~/Pictures/Screenshots
 
 echo ""
 echo "Show POSIX path in finder title"
