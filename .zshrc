@@ -9,7 +9,7 @@ export SHELL=$(which zsh);
 export LESS="-R"
 
 # Support comments in interactive session
-setopt interactivecomments
+setopt INTERACTIVECOMMENTS
 
 # Missing paths
 PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
@@ -27,14 +27,17 @@ source "${HOME}/.zsh/.functions.zsh"
 # Load aliases
 source "${HOME}/.aliases"
 
+# Set Brew prefix var
+export BREW_PREFIX=$(brew --prefix)
+
 # Load Homebrew zsh site-functions
 if command -v brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  FPATH="${BREW_PREFIX}/share/zsh/site-functions:$FPATH"
 fi
 
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+FPATH=/share/zsh-completions:$FPATH
 
-chmod go-w "$(brew --prefix)/share"
+chmod go-w "${BREW_PREFIX}/share"
 
 autoload -Uz compinit
 rm -f $HOME/.zcompdump; compinit
