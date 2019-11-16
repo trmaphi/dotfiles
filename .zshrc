@@ -8,9 +8,13 @@ export SHELL=$(which zsh);
 
 export LESS="-R"
 
+# Support comments in interactive session
+setopt interactivecomments
+
 # Missing paths
 PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH}
 
+# Set custom bin directory
 PATH=${HOME}/.bin:${PATH}
 
 # Dotfiles path
