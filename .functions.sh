@@ -40,7 +40,7 @@ FZF-EOF"
 }
 
 # fbranch - checkout git branch (including remote branches)
-fbrach() {
+fbranch() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
     branch=$(echo "$branches" |
@@ -102,7 +102,7 @@ fkill() {
 }
 
 # Select a docker image to start and attach to
-function fdockerattach() {
+fdockerattach() {
   local cid
   cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
@@ -110,7 +110,7 @@ function fdockerattach() {
 }
 
 # Select a running docker container to stop
-function fdockerstop() {
+fdockerstop() {
   local cid
   cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
 
@@ -118,7 +118,7 @@ function fdockerstop() {
 }
 
 # Select a docker container to remove
-function fdockerrm() {
+fdockerrm() {
   local cid
   cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
 
