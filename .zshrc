@@ -7,7 +7,7 @@ esac
 setopt INTERACTIVECOMMENTS          # Support comments in interactive session
 export SHELL=$(which zsh);          # Configure exe path of zsh
 export LESS="-R"                    # Configure less pager
-export DOTFILES="$HOME/dotfiles"; # Dotfiles path
+export DOTFILES="$HOME/dotfiles";   # Dotfiles path
 
 # Missing paths
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
@@ -17,8 +17,10 @@ export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
-source "$HOME/.aliases"           # Load aliases
-source "$HOME/.functions.sh"      # Load functions
+source "$HOME/.aliases"                   # Load aliases
+source "$HOME/.functions.sh"              # Load functions
+source "$HOME/.langsrc.sh"                # Load language specific config
+source "$HOME/.private.config.sh";        # Load private config
 
 # ZSH configs
 source "$HOME/.zsh/.functions.zsh"
@@ -37,8 +39,6 @@ fi
 
 autoload -U promptinit; promptinit
 source "$HOME/.zsh/.npm.completions.zsh"  # Load custom npm completions
-source "$HOME/.langsrc.sh"                # Load language specific config
-source "$HOME/.private.config.sh";        # Load private config
 
 # Load ZSH prompts
 autoload -U promptinit; promptinit
