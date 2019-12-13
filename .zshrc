@@ -67,4 +67,4 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # ZSH prompt config
-source "$HOME/.zsh/prompt.sh"
+source "$HOME/.zsh/.prompt.sh"
