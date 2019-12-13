@@ -25,21 +25,22 @@ source "$HOME/.private.config.sh";        # Load private config
 
 # ZSH configs
 source "$HOME/.zsh/.functions.zsh"
-export BREW_PREFIX=$(brew --prefix) # Set HOMEBREW path
+export BREW_PREFIX=$(brew --prefix)       # Homebrew prefix PATH
 
 # Load Homebrew ZSH site-functions
 if command -v brew &>/dev/null; then
   export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
-  export FPATH=/share/zsh-completions:$FPATH
+  export FPATH="$BREW_PREFIX/share/zsh-completions:$FPATH"
   chmod go-w "$BREW_PREFIX/share"
-  autoload -Uz compinit
-  rm -f $HOME/.zcompdump; compinit
   [ -e "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] &&
   source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
 fi
 
-autoload -U promptinit; promptinit
-source "$HOME/.zsh/.npm.completions.zsh"  # Load custom npm completions
+export FPATH="$HOME/.zsh/completions:$FPATH"
+
+# Load ZSH completions
+autoload -Uz compinit
+rm -f $HOME/.zcompdump; compinit
 
 # Load ZSH prompts
 autoload -U promptinit; promptinit
