@@ -1,6 +1,3 @@
-# Custom alias
-alias bj='bat --theme=TwoDark'
-
 # Git alias
 
 alias g='git'
