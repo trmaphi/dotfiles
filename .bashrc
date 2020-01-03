@@ -21,6 +21,7 @@ source "$HOME/.langsrc.sh"                # Load language specific config
 source "$HOME/.private.config.sh";        # Load private config
 
 # BASH configs
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # If Homebrew is installed (OS X), its Bash completion modules are loaded.
 if [ -f /etc/bash_completion ]; then
@@ -48,6 +49,7 @@ for CUSTOM_COMPLETION in "$HOME"/.completions.d/*; do
   [[ -f $CUSTOM_COMPLETION ]] && source "$CUSTOM_COMPLETION"
 done
 
+# History config
 HISTSIZE=10000                                      # Save 5,000 lines of history in memory
 HISTFILESIZE=2000000                                # Save 2,000,000 lines of history to disk (will have to grep ~/.bash_history for full listing)
 HISTCONTROL=ignoreboth                              # Ignore redundant or space commands
@@ -55,5 +57,3 @@ HISTIGNORE='ls:ll:ls -alh:pwd:clear:history'        # Ignore more
 HISTTIMEFORMAT='%F %T '                             # Set time format
 shopt -s cmdhist                                    # Multiple commands on one line show up as a single line
 shopt -s histappend                                 # Append to history instead of overwrite
-# Append new history lines, clear the history list, re-read the history list, print prompt.
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

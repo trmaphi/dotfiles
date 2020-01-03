@@ -25,7 +25,7 @@ source "$HOME/.langsrc.sh"                # Load language specific config
 source "$HOME/.private.config.sh";        # Load private config
 
 # ZSH configs
-source "$HOME/.zsh/.functions.zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BREW_PREFIX=$(brew --prefix)       # Homebrew prefix PATH
 
 # Load Homebrew ZSH site-functions
