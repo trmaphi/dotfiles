@@ -33,18 +33,9 @@ fshow() {
 FZF-EOF"
 }
 
-# fbranch - checkout git branch (including remote branches)
-fbranch() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-    branch=$(echo "$branches" |
-      fzf-tmux -d $((2 + $(wc -l <<<"$branches"))) +m) &&
-    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
 # get git commit sha
 # example usage: git rebase -i `fcs`
-fgitsha() {
+fcs() {
   local commits commit
   commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
     commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
@@ -52,7 +43,7 @@ fgitsha() {
 }
 
 # fcoc - checkout git commit
-fcheckoutcommit() {
+fcoc() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
     commit=$(echo "$commits" | fzf --tac +s +m -e) &&
@@ -60,7 +51,7 @@ fcheckoutcommit() {
 }
 
 # fco - checkout git branch/tag
-fcheckout() {
+fco() {
   local tags branches target
   branches=$(
     git --no-pager branch --all \
