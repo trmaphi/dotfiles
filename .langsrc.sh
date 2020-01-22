@@ -9,4 +9,4 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 # Set python --user install bin
-export PATH="$(python -m site --user-base)/.bin:$PATH"
+export PATH="$(python -m site --user-base)/bin:$PATH"
