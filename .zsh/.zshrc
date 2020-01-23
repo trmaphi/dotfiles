@@ -12,7 +12,6 @@ setopt INTERACTIVECOMMENTS          # Support comments in interactive session
 
 # Load Homebrew ZSH site-functions
 if command -v brew &>/dev/null; then
-  export FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
   export FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
   chmod go-w "$(brew --prefix)/share"
   . "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
