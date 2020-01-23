@@ -20,3 +20,6 @@ vscode/User/workspaceStorage
 # configs in darwin
 .config/configstore
 .config/copyq
+
+# zsh
+.zsh/.zcompdump
