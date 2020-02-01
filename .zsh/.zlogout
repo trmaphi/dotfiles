@@ -9,4 +9,5 @@ rm -rf ~/.pm2 \
 ~/.node_repl_history \
 ~/.yarnrc \
 ~/.eosio \
-~/.lesshst
+~/.lesshst \
+~/.viminfo
