@@ -24,3 +24,4 @@ vscode/User/workspaceStorage
 
 # zsh
 .zsh/.zcompdump
+.zsh/.zcompdump.*
