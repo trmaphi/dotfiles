@@ -63,22 +63,8 @@ fco() {
   git checkout $(awk '{print $2}' <<<"$target")
 }
 
-# fkill - kill processes - list only the ones you can kill. Modified the earlier script.
-fkill() {
-  local pid
-  if [ "$UID" != "0" ]; then
-    pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
-  else
-    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-  fi
-
-  if [ "x$pid" != "x" ]; then
-    echo $pid | xargs kill -${1:-9}
-  fi
-}
-
-# Select a docker image to start and attach to
-fdockerattach() {
+# Select a docker container to start and attach to
+function da() {
   local cid
   cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
