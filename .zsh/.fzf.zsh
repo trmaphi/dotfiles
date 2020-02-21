@@ -13,7 +13,7 @@ fi
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 # fshow - git commit browser
-fshow() {
+function fshow() {
   git log --graph --color=always \
     --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
     fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -26,7 +26,7 @@ FZF-EOF"
 
 # get git commit sha
 # example usage: git rebase -i `fcs`
-fcs() {
+function fcs() {
   local commits commit
   commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
     commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
@@ -34,7 +34,7 @@ fcs() {
 }
 
 # fcoc - checkout git commit
-fcoc() {
+function fcoc() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
     commit=$(echo "$commits" | fzf --tac +s +m -e) &&
@@ -42,7 +42,7 @@ fcoc() {
 }
 
 # fco - checkout git branch/tag
-fco() {
+function fco() {
   local tags branches target
   branches=$(
     git --no-pager branch --all \
@@ -72,7 +72,7 @@ function da() {
 }
 
 # Select a running docker container to stop
-fdockerstop() {
+function ds() {
   local cid
   cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
 
@@ -80,7 +80,7 @@ fdockerstop() {
 }
 
 # Select a docker container to remove
-fdockerrm() {
+function drm() {
   local cid
   cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
 
