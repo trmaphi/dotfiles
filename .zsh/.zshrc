@@ -31,7 +31,7 @@ if (prompt -l) | grep "spaceship" >/dev/null; then
   export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
   export SPACESHIP_PROMPT_DEFAULT_PREFIX='['
   export SPACESHIP_PROMPT_DEFAULT_SUFFIX=']'
-  export SPACESHIP_GIT_SYMBOL='[ '
+  export SPACESHIP_GIT_SYMBOL='[☯ '
   export SPACESHIP_PROMPT_ADD_NEWLINE=false
   export SPACESHIP_TIME_SHOW=true
   export SPACESHIP_TIME_PREFIX='['
@@ -47,11 +47,11 @@ if (prompt -l) | grep "spaceship" >/dev/null; then
   export SPACESHIP_GIT_BRANCH_COLOR='255'
   export SPACESHIP_GIT_STATUS_PREFIX='['
   export SPACESHIP_GIT_STATUS_MODIFIED='✎'
-  export SPACESHIP_NODE_SYMBOL=' '
+  export SPACESHIP_NODE_SYMBOL='⬡ '
   export SPACESHIP_AWS_PREFIX='['
-  export SPACESHIP_AWS_SYMBOL=" "
+  export SPACESHIP_AWS_SYMBOL='☁ '
   export SPACESHIP_DOCKER_PREFIX='['
-  export SPACESHIP_DOCKER_SYMBOL=" "
+  export SPACESHIP_DOCKER_SYMBOL='🐳'
   export SPACESHIP_EXIT_CODE_SHOW=true
 
   prompt spaceship
@@ -113,3 +113,6 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
+export NVM_DIR="${HOME}/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
