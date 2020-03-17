@@ -3,7 +3,7 @@
 VM=default
 DOCKER_MACHINE=/usr/local/bin/docker-machine
 VBOXMANAGE=/Applications/VirtualBox.app/Contents/MacOS/VBoxManage
-
+BOOT2DOCKER_URL=https://github.com/boot2docker/boot2docker/releases/download/v19.03.5/boot2docker.iso
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 NC='\033[0m'
@@ -45,7 +45,10 @@ if [ $VM_EXISTS_CODE -eq 1 ]; then
   if [ "${NO_PROXY}" ]; then
     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY=$NO_PROXY"
   fi
-  "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV --virtualbox-memory 2048 --virtualbox-disk-size 204800 "${VM}"
+  "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV \
+  --virtualbox-boot2docker-url $BOOT2DOCKER_URL \
+  --virtualbox-memory 1024 \
+  --virtualbox-disk-size 102400 "${VM}"
 fi
 
 VM_STATUS="$( set +e ; ${DOCKER_MACHINE} status ${VM} )"
@@ -54,11 +57,7 @@ if [ "${VM_STATUS}" != "Running" ]; then
   yes | "${DOCKER_MACHINE}" regenerate-certs "${VM}"
 fi
 
-eval "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"
-
 cat << EOF
-
-
                         ##         .
                   ## ## ##        ==
                ## ## ## ## ##    ===
@@ -67,16 +66,9 @@ cat << EOF
            \______ o           __/
              \    \         __/
               \____\_______/
-
-
 EOF
 echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine with IP ${GREEN}$(${DOCKER_MACHINE} ip ${VM})${NC}"
 echo "For help getting started, check out the docs at https://docs.docker.com"
 echo
 
-# USER_SHELL="$(dscl /Search -read /Users/${USER} UserShell | awk '{print $2}' | head -n 1)"
-# if [[ "${USER_SHELL}" == *"/bash"* ]] || [[ "${USER_SHELL}" == *"/zsh"* ]] || [[ "${USER_SHELL}" == *"/sh"* ]]; then
-#   "${SHELL}" --login
-# else
-#   "${USER_SHELL}"
-# fi
+eval "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"
