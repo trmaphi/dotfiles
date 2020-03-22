@@ -47,7 +47,7 @@ if [ $VM_EXISTS_CODE -eq 1 ]; then
   fi
   "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV \
   --virtualbox-boot2docker-url $BOOT2DOCKER_URL \
-  --virtualbox-memory 1024 \
+  --virtualbox-memory 2048 \
   --virtualbox-disk-size 102400 "${VM}"
 fi
 
