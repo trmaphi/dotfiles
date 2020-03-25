@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 VM=default
 DOCKER_MACHINE=/usr/local/bin/docker-machine
@@ -72,4 +72,3 @@ echo "For help getting started, check out the docs at https://docs.docker.com"
 echo
 
 echo "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"
-eval "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"
