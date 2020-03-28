@@ -6,9 +6,9 @@ esac
 
 setopt INTERACTIVECOMMENTS          # Support comments in interactive session
 
-. "$HOME/.aliases"                   # Load aliases
-. "$HOME/.functions.sh"              # Load functions
-. "$HOME/.private.config.sh";        # Load private config
+. "$HOME/.aliases"                  # Load aliases
+. "$HOME/.functions.sh"             # Load functions
+. "$HOME/.private.config.sh"        # Load private config
 
 # Load Homebrew ZSH site-functions
 if command -v brew &>/dev/null; then
@@ -114,5 +114,8 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-export NVM_DIR="${HOME}/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+## Load paths
+. "$HOME/.path.sh"
+
+## Load languages setups
+. "$HOME/.lang.sh"
