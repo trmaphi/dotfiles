@@ -25,19 +25,19 @@ PACKAGES=(
     bat # https://github.com/sharkdp/bat
     bash
     bash-completion@2
-    dive # https://github.com/wagoodman/dive
-    fd
+    # dive # https://github.com/wagoodman/dive
+    # fd
     findutils
     fzf # https://github.com/junegunn/fzf
     git
-    goaccess # https://github.com/allinurl/goaccess
+    # goaccess # https://github.com/allinurl/goaccess
     gnu-sed
     grep
     htop # https://github.com/hishamhm/htop
     httpie  # https://github.com/jakubroztocil/httpie
     jq # https://github.com/stedolan/jq
     nvm
-    ripgrep
+    # ripgrep
     stow
     tldr
     tmux
