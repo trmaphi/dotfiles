@@ -79,12 +79,12 @@ if (prompt -l) | grep "spaceship" >/dev/null; then
     # julia       # Julia section (Disabled)
     # venv          # virtualenv section
     # conda         # conda virtualenv section
-    # pyenv         # Pyenv section
+    pyenv         # Pyenv section
     # dotnet        # .NET section
     # ember       # Ember.js section (Disabled)
     # kubecontext   # Kubectl context section
     # terraform     # Terraform workspace section
-    # exec_time     # Execution time
+    exec_time     # Execution time
     line_sep      # Line break
     # battery       # Battery level and status
     # vi_mode     # Vi-mode indicator (Disabled)
