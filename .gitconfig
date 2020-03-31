@@ -1,5 +1,8 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
+	editor = code --wait
 [user]
 	name = Truong Ma Phi
+	email = trmaphi@gmail.com
+	signingKey = 1A45102E938E49B5
