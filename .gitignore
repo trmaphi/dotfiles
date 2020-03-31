@@ -15,8 +15,8 @@ vscode/User/globalStorage/
 vscode/User/snippets
 vscode/User/workspaceStorage
 
-# private configs
-.private.config.sh
+# private
+.private.sh
 
 # configs in darwin
 .config/configstore

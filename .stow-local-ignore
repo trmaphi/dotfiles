@@ -41,7 +41,7 @@ osx.setup.sh
 
 zsh.completion.d
 .aliases.sh
-.private.config.sh
+.private.sh
 .fzf.zsh
 
 vscode-settings.json

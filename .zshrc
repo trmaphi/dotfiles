@@ -14,7 +14,7 @@ DOTFILEDIR=$HOME/dotfiles
 setopt INTERACTIVECOMMENTS          # Support comments in interactive session
 
 . "$DOTFILEDIR/.aliases.sh"               # Load aliases
-. "$DOTFILEDIR/.private.config.sh"        # Load private config
+. "$DOTFILEDIR/.private.sh"        # Load private config
 
 # Load Homebrew ZSH site-functions
 if command -v brew &>/dev/null; then
