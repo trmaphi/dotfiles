@@ -19,9 +19,9 @@ if command -v brew &>/dev/null; then
 fi
 
 # Load ZSH completions
-export FPATH="$HOME/.zsh/completions:$FPATH"
+export FPATH="$ZDOTDIR/completions:$FPATH"
 autoload -Uz compinit
-rm -f $ZDOTDIR/.zcompdump; compinit
+rm -f $ZDOTDIR/.zcompdump*; compinit
 
 # Load ZSH prompts
 autoload -U promptinit; promptinit
