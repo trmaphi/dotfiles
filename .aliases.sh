@@ -258,6 +258,8 @@ alias xt="extract"
 alias svim="sudo vim"
 alias snano="sudo nano"
 
-# Lazygit & Lazydocker
-alias lg='lazygit'
-alias lzd='lazydocker'
+# docker
+if [ command -v docker >/dev/null 2>&1 ]; then
+  alias rm-all-docker-container="docker rm $(docker ps -aq)"
+  alias stop-all-docker-container="docker stop $(docker ps -aq)"
+fi

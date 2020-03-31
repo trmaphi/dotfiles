@@ -17,12 +17,12 @@
         "editor.formatOnSave": false
     },
     "[jsonc]": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": false
     },
     "typescript.preferences.quoteStyle": "single",
 
     // TERMINAL
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.integrated.macOptionIsMeta": true,
-    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.tree.showScanModeButton": false
 }

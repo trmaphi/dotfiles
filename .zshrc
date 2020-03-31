@@ -4,22 +4,28 @@ case $- in
     *) return;;
 esac
 
+# set locale for c/c++ compiler
+export LC_ALL=en_US.UTF-8
+# set GPG key tty
+export GPG_TTY=$(tty)
+ZDOTDIR=$HOME
+DOTFILEDIR=$HOME/dotfiles
+
 setopt INTERACTIVECOMMENTS          # Support comments in interactive session
 
-. "$HOME/.aliases"                  # Load aliases
-. "$HOME/.functions.sh"             # Load functions
-. "$HOME/.private.config.sh"        # Load private config
+. "$DOTFILEDIR/.aliases.sh"               # Load aliases
+. "$DOTFILEDIR/.private.config.sh"        # Load private config
 
 # Load Homebrew ZSH site-functions
 if command -v brew &>/dev/null; then
   export FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
   chmod go-w "$(brew --prefix)/share"
   . "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  . "$ZDOTDIR/.fzf.zsh"
+  . "$DOTFILEDIR/.fzf.zsh"
 fi
 
 # Load ZSH completions
-export FPATH="$ZDOTDIR/completions:$FPATH"
+export FPATH="$DOTFILEDIR/zsh.completion.d:$FPATH"
 autoload -Uz compinit
 rm -f $ZDOTDIR/.zcompdump*; compinit
 
@@ -115,10 +121,28 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 ## Load paths
-. "$HOME/.path.sh"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+# brew info grep
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+# Load gnu-sed instead of mac os default
+# brew info gnu-sed
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+# brew info make
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
 ## Load languages setups
-. "$HOME/.lang.sh"
+# Set path rust cargo
+# export PATH="$HOME/.cargo/bin:$PATH"
+
+# Set golang GO_PATH environment variable
+# export GOPATH=$(go env GOPATH)
+
+# Set NVM home and load nvm
+export NVM_DIR="${HOME}/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
+command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
 
 ## Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1

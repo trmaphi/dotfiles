@@ -38,3 +38,10 @@ osx.setup.sh
 ^/COPYING
 
 \.bashrc
+
+zsh.completion.d
+.aliases.sh
+.private.config.sh
+.fzf.zsh
+
+vscode-settings.json
