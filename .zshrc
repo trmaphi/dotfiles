@@ -59,6 +59,7 @@ if (prompt -l) | grep "spaceship" >/dev/null; then
   export SPACESHIP_DOCKER_PREFIX='['
   export SPACESHIP_DOCKER_SYMBOL='🐳'
   export SPACESHIP_EXIT_CODE_SHOW=true
+  export SPACESHIP_EXEC_TIME_PREFIX='[took '
 
   prompt spaceship
 
