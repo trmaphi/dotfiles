@@ -1,15 +1,14 @@
 {
+    // FILES
     "files.trimTrailingWhitespace": true,
 
-    "window.zoomLevel": 1,
     // UPDATE
     "update.mode": "manual",
     "extensions.autoCheckUpdates": false,
+
     // EDITOR
     "editor.renderWhitespace": "boundary",
     "editor.formatOnSave": true,
-    "editor.fontSize": 14,
-    "editor.fontWeight": "400",
     "editor.suggestSelection": "first",
 
     // LANGUAGES SPECIFIC
@@ -22,7 +21,12 @@
     "typescript.preferences.quoteStyle": "single",
 
     // TERMINAL
-    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.integrated.macOptionIsMeta": true,
+
+
+    // GIT
+    "git.enableCommitSigning": true,
+
+    // EXTEND
     "todo-tree.tree.showScanModeButton": false
 }
