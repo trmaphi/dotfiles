@@ -143,10 +143,15 @@ export PATH="$HOME/.bin:$PATH"
 # export GOPATH=$(go env GOPATH)
 
 # Set NVM home and load nvm
-export NVM_DIR="${HOME}/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
+# Set python 
 command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
+
+# Set java and ecosystem tools
+export SDKMAN_DIR="$HOME/.sdkman"
+[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
 ## Disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
