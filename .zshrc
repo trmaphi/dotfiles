@@ -20,8 +20,11 @@ setopt INTERACTIVECOMMENTS          # Support comments in interactive session
 if command -v brew &>/dev/null; then
   export FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
   chmod go-w "$(brew --prefix)/share"
-  . "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  . "$DOTFILEDIR/.fzf.zsh"
+  [ -s "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] \
+    && . "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" \
+    && ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
+  [ -s "$DOTFILEDIR/.fzf.zsh" ] \
+    && . "$DOTFILEDIR/.fzf.zsh"
 fi
 
 # Load ZSH completions
