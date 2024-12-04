@@ -24,7 +24,7 @@ else
   export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 fi
 
-export PATH="$PATH:$HOME/local/bin"
-eval "$($HOME/local/bin/mise activate zsh)"
+export PATH="$PATH:$HOME/.local/bin"
+eval "$($HOME/.local/bin/mise activate zsh)"
 eval "$(starship init zsh)"
-eval "$($HOME/.functions.sh)"  
+eval "$($HOME/.functions.sh)"
