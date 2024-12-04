@@ -5,4 +5,16 @@
 [user]
 	name = Truong Ma Phi
 	email = trmaphi@gmail.com
-	signingKey = DC55809DAD4E1C9C
+	signingkey = 436B20EA6D40C2E2
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true

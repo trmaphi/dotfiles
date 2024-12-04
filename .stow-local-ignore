@@ -44,4 +44,4 @@ zsh.completion.d
 .private.sh
 .fzf.zsh
 
-vscode-settings.json
+vscode-settings.jsonc
