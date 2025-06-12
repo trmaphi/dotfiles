@@ -1,7 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
-	editor = code --wait
 [user]
 	name = Truong Ma Phi
 	email = trmaphi@gmail.com
@@ -9,11 +8,7 @@
 [pull]
 	rebase = false
 [init]
-	defaultBranch = master
-[diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+	defaultBranch = main
 [gpg]
 	program = /usr/local/bin/gpg
 [commit]
