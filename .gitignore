@@ -1,6 +1,7 @@
 # Mac OS X
 .DS_Store
-.config/
+.config/*
+!.config/starship.toml
 
 # vscode editor
 .vscode/settings.json
