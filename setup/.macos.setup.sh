@@ -1,114 +1,116 @@
 #!/usr/bin/env bash
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
 echo "###############################################################################"
 echo "# Start Bootstrapping..."
 echo "###############################################################################"
 
-echo ""
-# Check for Homebrew, install if we don't have it
-if test ! $(which brew); then
-echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# 1. Install Homebrew (Modern method)
+if ! command -v brew &> /dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Set path for the current session based on architecture
+    if [[ "$(uname -m)" == "arm64" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
 fi
 
-# Update homebrew recipes
+# 2. Use Brewfile for all installations
+# This replaces your PACKAGES and CASKS arrays
+echo "Updating Homebrew and installing bundles..."
 brew update
+brew upgrade
 
-# Install core utils
-brew install coreutils
+# Create a temporary Brewfile or point to one in your dotfiles
+# Using a 'here document' to keep this script self-contained
+brew bundle --no-lock --file=- <<EOF
+# Taps
+tap "homebrew/bundle"
+tap "wagoodman/dive"
 
-# Tap of dive
-brew tap wagoodman/dive
+# Executables
+brew "coreutils"
+brew "mise"
+brew "bat"
+brew "bash"
+brew "bash-completion@2"
+brew "dive"
+brew "findutils"
+brew "fzf"
+brew "git"
+brew "gnu-sed"
+brew "grep"
+brew "htop"
+brew "httpie"
+brew "jq"
+brew "nvm"
+brew "stow"
+brew "tldr"
+brew "tmux"
+brew "tree"
+brew "vim"
+brew "wget"
+brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "osv-scanner"
+brew "gitleaks"
 
-# Install essential packages
-PACKAGES=(
-    bat # https://github.com/sharkdp/bat
-    bash
-    bash-completion@2
-    # dive # https://github.com/wagoodman/dive
-    # fd
-    findutils
-    fzf # https://github.com/junegunn/fzf
-    git
-    # goaccess # https://github.com/allinurl/goaccess
-    gnu-sed
-    grep
-    htop # https://github.com/hishamhm/htop
-    httpie  # https://github.com/jakubroztocil/httpie
-    jq # https://github.com/stedolan/jq
-    nvm
-    # ripgrep
-    stow
-    tldr
-    tmux
-    tree
-    vim
-    wget
-    zsh
-    zsh-autosuggestions
-    zsh-completions
-)
-echo ""
-echo "Installing packages..."
-brew install ${PACKAGES[@]}
-echo "Cleaning up..."
+# Casks (GUI Apps)
+cask "copyq"
+cask "claude-code"
+cask "google-chrome"
+cask "cloudflared"
+cask "visual-studio-code"
+EOF
+
+echo "Cleaning up Homebrew..."
 brew cleanup
 
-# Install essential casks
-echo ""
-echo "Installing cask..."
-brew install caskroom/cask/brew-cask
-CASKS=(
-    copyq
-    drawio
-    google-chrome
-    iterm2
-    ngrok
-    postman
-    slack
-    visual-studio-code
-    # docker-toolbox requires extra manual config
-    # docker-toolbox
-)
-echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
-
 echo "###############################################################################"
-echo "# Configuring OSX..."
+echo "# Configuring macOS..."
 echo "###############################################################################"
 
-echo ""
-echo "Enabling tap to click"
+# Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write 'Apple Global Domain' com.apple.mouse.tapBehavior 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-echo ""
-echo "Change screenshots location"
-mkdir ~/Pictures/Screenshots && \
-defaults write com.apple.screencapture location ~/Pictures/Screenshots
+# Screenshots
+mkdir -p ~/Pictures/Screenshots
+defaults write com.apple.screencapture location -string "~/Pictures/Screenshots"
 
-echo ""
-echo "Show POSIX path in finder title"
+# Finder: show path bar and full POSIX path in title
+defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-echo ""
-echo "Enabling the Develop menu and the Web Inspector in Safari"
+# Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
-echo ""
-echo "Creating WORKSPACE folder structure..."
-[[ ! -d sources ]] && mkdir sources
+# Workspace
+mkdir -p ~/sources
 
-echo ""
-echo "Replace vscode default settings with new settings"
-rm -rf ~/Library/Application\ Support/Code/User/
-ln -s ~/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
+# VS Code Symlink (Safe version)
+VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+DOTFILES_VSCODE="$HOME/dotfiles/vscode/User"
 
-echo ""
-echo "Create private config"
+if [ -d "$DOTFILES_VSCODE" ]; then
+    echo "Linking VS Code Settings..."
+    rm -rf "$VSCODE_USER_DIR"
+    ln -s "$DOTFILES_VSCODE" "$VSCODE_USER_DIR"
+else
+    echo "Warning: $DOTFILES_VSCODE not found. Skipping VS Code link."
+fi
+
+# Private config
 touch ~/private.config.sh
 
-echo "Bootstrapping complete"
+echo "Bootstrapping complete! Please restart your shell or reboot for all changes to take effect."
