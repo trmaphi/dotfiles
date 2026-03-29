@@ -174,12 +174,21 @@ done
 diff <(kubectl logs --previous <pod-name>) <(kubectl logs <pod-name>)
 ```
 
+## When kubectl Logs Aren't Enough
+
+`kubectl logs` only retains logs for the current pod lifecycle. If logs are unavailable, consider:
+
+- **Pod deleted or recreated** — Use `gcloud-gke-logging` skill to query Cloud Logging for historical GKE container logs
+- **Need logs beyond pod lifetime** — Cloud Logging retains logs after pods are gone
+- **Searching across many pods/nodes** — Cloud Logging filters are more powerful than label selectors
+
 ## Related Commands
 
 - `kubectl describe pod` - Events and status
 - `kubectl get events` - Cluster-level events
 - `kubectl exec` - Run commands in container
 - `kubectl top` - Resource usage
+- `gcloud logging read` - Cloud Logging for GKE (see `gcloud-gke-logging` skill)
 
 ## Red Flags
 

@@ -1,9 +1,9 @@
 ---
-name: gcloud-logging
+name: gcloud-gke-logging
 description: Use when debugging GKE production clusters, searching Cloud Logging for Kubernetes logs, investigating production issues, or need to query historical container logs
 ---
 
-# gcloud-logging
+# gcloud-gke-logging
 
 ## Overview
 
